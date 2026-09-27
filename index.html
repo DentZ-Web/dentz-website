@@ -2421,7 +2421,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
 (function() {
   const urlParams = new URLSearchParams(window.location.search);
   let rawSlipId = urlParams.get('id') || (urlParams.get('slip') !== 'true' ? urlParams.get('slip') : null);
-  const slipId = rawSlipId ? rawSlipId.replace(/[^a-zA-Z0-9_]/g, '') : null;
+  let hashId = null; if (window.location.hash.includes('?slip=true&id=')) { hashId = window.location.hash.split('id=')[1]; } const slipId = (rawSlipId || hashId) ? (rawSlipId || hashId).replace(/[^a-zA-Z0-9_]/g, '') : null;
   
   // Only activate if this is a slip viewing request
   if (!slipId || (window.location.pathname.indexOf('slip') === -1 && window.location.search.indexOf('slip=') === -1)) return;
@@ -3058,7 +3058,7 @@ div[role="dialog"] {
               orderPayload.slip_image_base64 = base64Data;
               
               // 3. Construct viewer link
-              const viewerUrl = window.location.href.split('?')[0] + '?slip=true&id=' + orderId;
+              const viewerUrl = window.location.origin + window.location.pathname + '?slip=true&id=' + orderId;
               orderPayload.slip_link = viewerUrl;
               
               // 4. Update FormSubmit payload
