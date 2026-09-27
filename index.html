@@ -2423,7 +2423,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
   const slipId = urlParams.get('slip') || urlParams.get('id');
   
   // Only activate if this is a slip viewing request
-  if (!slipId || window.location.pathname.indexOf('slip') === -1) return;
+  if (!slipId || (window.location.pathname.indexOf('slip') === -1 && window.location.search.indexOf('slip=') === -1)) return;
   
   // Hide the entire app and show slip viewer
   document.addEventListener('DOMContentLoaded', async function() {
