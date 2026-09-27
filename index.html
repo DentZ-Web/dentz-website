@@ -2420,7 +2420,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
 // Embedded Slip Viewer - handles ?slip=ID or /slip.html?id=ID URLs
 (function() {
   const urlParams = new URLSearchParams(window.location.search);
-  const slipId = urlParams.get('slip') || urlParams.get('id');
+  const slipId = urlParams.get('id') || (urlParams.get('slip') !== 'true' ? urlParams.get('slip') : null);
   
   // Only activate if this is a slip viewing request
   if (!slipId || (window.location.pathname.indexOf('slip') === -1 && window.location.search.indexOf('slip=') === -1)) return;
