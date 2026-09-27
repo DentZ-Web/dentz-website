@@ -1,4 +1,17 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>\n
+<!-- DENTZ DATA SECURITY -->
+<script id="dentz-data-security">
+// Prevent Right-Click
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+// Prevent DevTools and View Source Shortcuts
+document.addEventListener('keydown', function(e) {
+  if (e.keyCode === 123) { e.preventDefault(); return false; } // F12
+  if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { e.preventDefault(); return false; } // Ctrl+Shift+I/J/C
+  if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; } // Ctrl+U
+  if (e.metaKey && e.altKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67 || e.keyCode === 85)) { e.preventDefault(); return false; } // Mac equivalent
+});
+</script>
+
 <script>
   // Polyfills for Firebase Firestore WebChannel bug
   if (typeof AbortController !== 'undefined') {
