@@ -6205,36 +6205,68 @@ try {
 
 
 
+
+
 <style id="dentz-ultimate-font-system">
   /* 1. Import base Thai Font just in case */
   @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
   
-  /* 2. Layer 1: Numbers using Sarabun (TH Sarabun PSK) */
+  /* =========================================================================
+     COMPOSITE 1: BODY TEXT (NO FAUX-BOLDING, PROPORTIONAL SIZE)
+     ========================================================================= */
   @font-face {
     font-family: 'DentZComposite';
     src: url('https://fonts.gstatic.com/s/sarabun/v17/DtVjJx26TKEr37c9WBI.ttf') format('truetype');
     unicode-range: U+0030-0039; /* Numbers 0-9 */
-    size-adjust: 125%; /* Sarabun is smaller, scale it up to match Prompt perfectly */
+    size-adjust: 125%; 
   }
-
-  /* 3. Layer 2: English and Punctuation using Special Gothic Expanded One */
   @font-face {
     font-family: 'DentZComposite';
     src: url('https://fonts.gstatic.com/s/specialgothicexpandedone/v2/IurO6Zxk74-YaYk1r3HOet4g75ENmBxUmOK61tA0Iu5gnw.ttf') format('truetype');
     unicode-range: U+0000-002F, U+003A-007F; /* Basic Latin EXCEPT 0-9 */
-    size-adjust: 95%; /* Special Gothic is usually wide/large, scale down slightly to blend */
+    size-adjust: 85%; /* Scaled down slightly so it's not gigantic compared to Thai */
+    font-weight: 100 900; /* MAGIC: Prevents the browser from applying thick faux-bold! This solves the readability issue completely! */
   }
 
-  /* 4. Apply the font globally */
+  /* =========================================================================
+     COMPOSITE 2: DISPLAY TEXT (ALLOWS BOLDING FOR HEADINGS/LOGOS)
+     ========================================================================= */
+  @font-face {
+    font-family: 'DentZCompositeDisplay';
+    src: url('https://fonts.gstatic.com/s/sarabun/v17/DtVjJx26TKEr37c9WBI.ttf') format('truetype');
+    unicode-range: U+0030-0039; 
+    size-adjust: 125%; 
+  }
+  @font-face {
+    font-family: 'DentZCompositeDisplay';
+    src: url('https://fonts.gstatic.com/s/specialgothicexpandedone/v2/IurO6Zxk74-YaYk1r3HOet4g75ENmBxUmOK61tA0Iu5gnw.ttf') format('truetype');
+    unicode-range: U+0000-002F, U+003A-007F; 
+    size-adjust: 95%; /* Headings look better a bit larger */
+    /* NO font-weight limit here, so logos and h1-h6 can be thick! */
+  }
+
+  /* Apply Body Composite Globally */
   :root {
     --font-body: 'DentZComposite', 'Prompt', sans-serif !important;
-    --font-display: 'DentZComposite', 'Prompt', sans-serif !important;
+    --font-display: 'DentZCompositeDisplay', 'Prompt', sans-serif !important;
   }
 
-  /* Force override on EVERYTHING */
-  *, body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, div, span, strong, em, b, label, li, ul, ol, td, th, tr, table {
+  /* Base override: Force everything to use the thinner readable composite */
+  *, body, p, a, button, input, textarea, div, span, strong, em, b, label, li, ul, ol, td, th, tr, table {
     font-family: 'DentZComposite', 'Prompt', sans-serif !important;
+    font-synthesis: none !important; 
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Display override: Specifically target logos and main headers to keep their thickness */
+  h1, h2, h3, h4, h5, h6, 
+  .logo, .hero-title, .dent-z-logo, .header-logo, 
+  .compare-title, .story-title, .section-title {
+    font-family: 'DentZCompositeDisplay', 'Prompt', sans-serif !important;
+    font-synthesis: weight !important; /* Allow thick bold */
   }
 </style>
+
+
 
 \n</body></html>
