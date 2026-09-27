@@ -2434,7 +2434,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
     
     const container = document.createElement('div');
     container.style.cssText = 'background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 500px; width: 90%;';
-    container.innerHTML = '<h2 style="color:#166534;margin-top:0;">หลักฐานการชำระเงิน</h2><div id="slip-loading" style="color:#6b7280;font-style:italic;">กำลังโหลดภาพสลิป...</div><div id="slip-error" style="color:#dc2626;background:#fee2e2;padding:1rem;border-radius:8px;display:none;">ไม่พบข้อมูลสลิป</div><img id="slip-img" style="max-width:100%;height:auto;border-radius:8px;margin-top:1rem;display:none;" alt="Payment Slip"><br><a href="/" style="display:inline-block;margin-top:1.5rem;padding:0.75rem 1.5rem;background:#166534;color:white;text-decoration:none;border-radius:50px;">กลับสู่หน้าหลัก</a>';
+    container.innerHTML = '<h2 style="color:#166534;margin-top:0;">หลักฐานการชำระเงิน</h2><div id="slip-loading" style="color:#6b7280;font-style:italic;">กำลังโหลดภาพสลิป...</div><div id="slip-error" style="color:#dc2626;background:#fee2e2;padding:1rem;border-radius:8px;display:none;">ไม่พบข้อมูลสลิป</div><img id="slip-img" style="max-width:100%;height:auto;border-radius:8px;margin-top:1rem;display:none;" alt="Payment Slip">';
     document.body.appendChild(container);
     
     try {
