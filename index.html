@@ -3057,7 +3057,7 @@ div[role="dialog"] {
               orderPayload.slip_image_base64 = base64Data;
               
               // 3. Construct viewer link
-              const viewerUrl = 'https://' + window.location.host + '/slip.html?id=' + orderId;
+              const viewerUrl = window.location.href.split('?')[0] + '?slip=true&id=' + orderId;
               orderPayload.slip_link = viewerUrl;
               
               // 4. Update FormSubmit payload
