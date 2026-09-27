@@ -2460,6 +2460,18 @@ window.saveOrderToFirestore = async function(orderData, customId) {
   });
 })();
 </script>
+
+<style id="global-english-font-override">
+  @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+
+  /* Apply Special Gothic Expanded One to all text.
+     Since it only supports English, Thai characters will automatically 
+     fall back to the Prompt font exactly as requested. */
+  *, body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, div, span, strong, em, b, label, li, ul, ol, td, th, tr, table {
+    font-family: 'Special Gothic Expanded One', 'Prompt', sans-serif !important;
+  }
+</style>
 </head>
   <body>
 
