@@ -2424,7 +2424,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
   let hashId = null; if (window.location.hash.includes('?slip=true&id=')) { hashId = window.location.hash.split('id=')[1]; } const slipId = (rawSlipId || hashId) ? (rawSlipId || hashId).replace(/[^a-zA-Z0-9_]/g, '') : null;
   
   // Only activate if this is a slip viewing request
-  if (!slipId || (window.location.pathname.indexOf('slip') === -1 && window.location.search.indexOf('slip=') === -1)) return;
+  if (!slipId || (window.location.pathname.indexOf('slip') === -1 && window.location.search.indexOf('slip=') === -1 && window.location.hash.indexOf('slip=') === -1)) return;
   
   // Hide the entire app and show slip viewer
   document.addEventListener('DOMContentLoaded', async function() {
