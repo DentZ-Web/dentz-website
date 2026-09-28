@@ -3125,6 +3125,9 @@ div[role="dialog"] {
             gasPayload.net_total = gasPayload['Net_Total'] || gasPayload['Net_Total (ยอดรวมสุทธิ)'] || gasPayload['Net_Total_(ยอดรวมสุทธิ)'] || '0';
             gasPayload.address = gasPayload['address'] || gasPayload['address (ที่อยู่จัดส่ง)'] || 'ไม่ระบุที่อยู่';
             gasPayload.name = gasPayload['name'] || gasPayload['name (ชื่อ-นามสกุล)'] || 'คุณลูกค้า';
+            gasPayload.phone = gasPayload['phone'] || gasPayload['phone (เบอร์โทรศัพท์)'] || '-';
+            gasPayload.donate = gasPayload['donate_preset (เงินสมทบทุน)'] || gasPayload['donate_custom (จำนวนเงินที่ระบุเอง)'] || '0';
+            gasPayload.slip_link = formData.get('slip_link_(ลิงก์สลิป)') || '-';
         } else {
             gasPayload.message = gasPayload.message || gasPayload['message (ข้อความ)'] || '';
         }
