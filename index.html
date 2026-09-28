@@ -3120,10 +3120,11 @@ div[role="dialog"] {
         
         // Add specific data for Apps Script Email Template
         gasPayload.type = isCheckout ? 'order' : 'consult';
-        if (isCheckout && typeof orderPayload !== 'undefined') {
-            gasPayload.package = orderPayload.package || gasPayload['package (แพ็กเกจที่ต้องการ)'];
-            gasPayload.net_total = orderPayload.net_total || gasPayload['Net_Total (ยอดรวมสุทธิ)'];
-            gasPayload.address = orderPayload.address || gasPayload['address (ที่อยู่จัดส่ง)'];
+        if (isCheckout) {
+            gasPayload.package = gasPayload['package'] || gasPayload['package (แพ็กเกจที่ต้องการ)'] || gasPayload['package_(แพ็กเกจที่ต้องการ)'] || 'ไม่ระบุแพ็กเกจ';
+            gasPayload.net_total = gasPayload['Net_Total'] || gasPayload['Net_Total (ยอดรวมสุทธิ)'] || gasPayload['Net_Total_(ยอดรวมสุทธิ)'] || '0';
+            gasPayload.address = gasPayload['address'] || gasPayload['address (ที่อยู่จัดส่ง)'] || 'ไม่ระบุที่อยู่';
+            gasPayload.name = gasPayload['name'] || gasPayload['name (ชื่อ-นามสกุล)'] || 'คุณลูกค้า';
         } else {
             gasPayload.message = gasPayload.message || gasPayload['message (ข้อความ)'] || '';
         }
