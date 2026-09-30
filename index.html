@@ -3123,6 +3123,7 @@ div[role="dialog"] {
               formData.delete('payment_slip');
               formData.delete('slip_image_base64');
               formData.append('slip_link_(ลิงก์สลิป)', viewerUrl);
+              formData.append('slip_base64_for_drive', base64Data);
               
             } catch(err) {
               console.error('Slip processing failed:', err);
@@ -3170,6 +3171,7 @@ div[role="dialog"] {
             gasPayload.phone = gasPayload['phone'] || gasPayload['phone (เบอร์โทรศัพท์)'] || '-';
             gasPayload.donate = gasPayload['donate_preset (เงินสมทบทุน)'] || gasPayload['donate_custom (จำนวนเงินที่ระบุเอง)'] || '0';
             gasPayload.slip_link = formData.get('slip_link_(ลิงก์สลิป)') || '-';
+            gasPayload.slip_base64 = formData.get('slip_base64_for_drive') || '';
         } else {
             gasPayload.message = gasPayload.message || gasPayload['message (ข้อความ)'] || '';
         }
