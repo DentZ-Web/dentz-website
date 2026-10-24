@@ -639,7 +639,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
 
 <style>
   /* Improve performance and fix lagging/freezing on mobile */
-  /* backdrop-filter enabled for DENT-Z glassmorphism */
+  /* backdrop-filter enabled for DENT-Z Nature glassmorphism */
   .article-modal-overlay, .modal-overlay {
     background: rgba(0, 0, 0, 0.85) !important; 
     transform: translateZ(0); /* Hardware acceleration */
@@ -664,7 +664,7 @@ window.saveOrderToFirestore = async function(orderData, customId) {
     height: 32px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232E7D32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
     background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
@@ -4629,16 +4629,16 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 
 <script id="luxury-header-fix">
-  // Smooth Sticky Header Elevation + Dynamic Body Offset (Zero Overlap, Zero Jumping)
   (function() {
     function syncHeaderHeight() {
-      const header = document.querySelector('.header');
+      var header = document.querySelector('.header');
       if (!header) return;
-      const h = header.offsetHeight;
+      var h = header.offsetHeight;
       if (h > 40) {
-        document.body.style.setProperty('padding-top', h + 'px', 'important');
+        var extra = window.innerWidth <= 992 ? 12 : 4;
+        document.body.style.setProperty('padding-top', (h + extra) + 'px', 'important');
       }
-      if (window.scrollY > 20) {
+      if (window.scrollY > 36) {
         header.classList.add('header-scrolled');
       } else {
         header.classList.remove('header-scrolled');
@@ -4651,12 +4651,12 @@ observer.observe(document.body, { childList: true, subtree: true });
     } else {
       syncHeaderHeight();
     }
-    setTimeout(syncHeaderHeight, 300);
-    setTimeout(syncHeaderHeight, 1000);
+    setTimeout(syncHeaderHeight, 250);
+    setTimeout(syncHeaderHeight, 900);
     if (typeof ResizeObserver !== 'undefined') {
-      const ro = new ResizeObserver(syncHeaderHeight);
-      const tryObserve = () => {
-        const header = document.querySelector('.header');
+      var ro = new ResizeObserver(syncHeaderHeight);
+      var tryObserve = function() {
+        var header = document.querySelector('.header');
         if (header) ro.observe(header);
       };
       if (document.readyState === 'loading') {
@@ -6479,51 +6479,190 @@ try {
   observer.observe(document.body, { childList: true, subtree: true });
 })();
 </script>
-<!-- DENT-Z MASTERPIECE UI OVERHAUL START -->
+<!-- DENT-Z NATURE THEME (21st.dev) + HERO-01 UI OVERHAUL START -->
 <style id="dentz-masterpiece-ui-system">
   /* ============================================================================
-     DENT-Z COMPREHENSIVE LAYOUT, SPACING, GRAPHIC & RESPONSIVE OVERHAUL
-     (ORIGINAL BRAND LOGO PATTERN PRESERVED 100%)
+     0. 21st.dev "NATURE" BY SERAFIM — EXACT DESIGN TOKENS & SHADCN FOUNDATION
+     Palette from reference:
+       Primary     #2E7D32   Secondary   #E8F5E9   Accent      #C8E6C9
+       Muted       #EFEBE4   Destructive #C62828   Border      #DFD6CA
+       Card        #FFFEFB   Background  #F8F5F0   Radius      0.5rem (8px)
      ============================================================================ */
-  :root {
-    --dz-emerald-950: #04160C;
-    --dz-emerald-900: #0A2E1A;
-    --dz-emerald-800: #0F4226;
-    --dz-emerald-700: #14532D;
-    --dz-emerald-600: #166534;
-    --dz-emerald-500: #1E824C;
-    --dz-emerald-400: #34D399;
-    --dz-mint-100: #D1FAE5;
-    --dz-mint-50: #ECFDF5;
-    --dz-gold-600: #B8860B;
-    --dz-gold-500: #C5A059;
-    --dz-gold-400: #D4AF37;
-    --dz-gold-300: #F5E27A;
-    --dz-gold-100: #FBF5E6;
-    --dz-shadow-sm: 0 6px 20px -2px rgba(10, 46, 26, 0.07), 0 2px 6px -1px rgba(10, 46, 26, 0.04);
-    --dz-shadow-md: 0 18px 42px -8px rgba(10, 46, 26, 0.11), 0 4px 14px -2px rgba(10, 46, 26, 0.05);
-    --dz-shadow-lg: 0 30px 70px -12px rgba(10, 46, 26, 0.16), 0 10px 28px -4px rgba(10, 46, 26, 0.08);
-    --dz-shadow-gold: 0 24px 55px -10px rgba(20, 83, 45, 0.2), 0 0 30px rgba(212, 175, 55, 0.28);
-    --dz-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --dz-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  html:root {
+    --nt-bg: #F8F5F0;
+    --nt-bg-soft: #FDFBF7;
+    --nt-bg-sage: #EEF6EE;
+    --nt-card: #FFFEFB;
+    --nt-card-pure: #FFFFFF;
+    --nt-primary: #2E7D32;
+    --nt-primary-hover: #256628;
+    --nt-primary-dark: #1B5E20;
+    --nt-primary-deep: #122615;
+    --nt-secondary: #E8F5E9;
+    --nt-secondary-fg: #1B5E20;
+    --nt-accent: #C8E6C9;
+    --nt-accent-fg: #1B5E20;
+    --nt-muted: #EFEBE4;
+    --nt-muted-fg: #66584F;
+    --nt-fg: #2D2420;
+    --nt-heading: #1B2E1E;
+    --nt-border: #DFD6CA;
+    --nt-border-strong: #CFC3B4;
+    --nt-destructive: #C62828;
+    --nt-ring: rgba(46, 125, 50, 0.22);
+
+    /* Nature Radius Scale (base 0.5rem = 8px) */
+    --nt-radius-sm: 0.375rem; /* 6px */
+    --nt-radius: 0.5rem;      /* 8px — shadcn buttons, inputs, badges */
+    --nt-radius-md: 0.625rem; /* 10px */
+    --nt-radius-lg: 0.875rem; /* 14px — shadcn cards */
+    --nt-radius-xl: 1.125rem; /* 18px — hero & feature stages */
+
+    /* Soft Organic Shadows (warm earth-forest undertone, zero harsh black/gold) */
+    --nt-shadow-xs: 0 1px 2px rgba(45, 36, 32, 0.05);
+    --nt-shadow-sm: 0 2px 6px -1px rgba(45, 36, 32, 0.06), 0 8px 20px -8px rgba(27, 46, 30, 0.08);
+    --nt-shadow-md: 0 4px 12px -2px rgba(45, 36, 32, 0.06), 0 18px 36px -12px rgba(27, 46, 30, 0.12);
+    --nt-shadow-lg: 0 8px 20px -4px rgba(45, 36, 32, 0.06), 0 28px 58px -16px rgba(27, 64, 32, 0.18);
+    --nt-shadow-green: 0 16px 36px -12px rgba(46, 125, 50, 0.28);
+
+    --nt-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --nt-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Re-map legacy site CSS variables directly to Nature tokens */
+    --primary: #2E7D32 !important;
+    --primary-light: #4CAF50 !important;
+    --primary-dark: #1B5E20 !important;
+    --secondary: #E8F5E9 !important;
+    --accent: #C8E6C9 !important;
+    --text-color: #2D2420 !important;
+    --text-light: #66584F !important;
+    --white: #FFFEFB !important;
+    --border: #DFD6CA !important;
+    --glass-bg: rgba(255, 254, 251, 0.88) !important;
+    --glass-border: #DFD6CA !important;
+    --glass-shadow: var(--nt-shadow-md) !important;
+    --gradient-primary: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%) !important;
+    --gradient-light: linear-gradient(135deg, #FFFEFB 0%, #E8F5E9 100%) !important;
+    --gold: #2E7D32 !important;
+    --gold-light: #C8E6C9 !important;
+    --gold-glow: rgba(46, 125, 50, 0.18) !important;
+    --emerald: #2E7D32 !important;
+    --emerald-dark: #1B5E20 !important;
+    --emerald-glow: rgba(46, 125, 50, 0.2) !important;
   }
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 110px;
+    scroll-padding-top: 108px;
+    scrollbar-color: #A5D6A7 #EFEBE4;
+    overflow-x: clip !important;
   }
 
-  body {
-    background-color: #F3F8F5 !important;
+  html ::selection {
+    background: #C8E6C9;
+    color: #1B5E20;
+  }
+
+  html body {
+    background-color: var(--nt-bg) !important;
     background-image:
-      radial-gradient(at 0% 0%, rgba(167, 243, 208, 0.32) 0px, transparent 48%),
-      radial-gradient(at 100% 12%, rgba(212, 175, 55, 0.14) 0px, transparent 42%),
-      radial-gradient(at 50% 45%, rgba(209, 250, 229, 0.28) 0px, transparent 58%) !important;
-    color: #0F291A !important;
-    overflow-x: hidden !important;
+      radial-gradient(at 0% 0%, rgba(200, 230, 201, 0.35) 0px, transparent 45%),
+      radial-gradient(at 100% 22%, rgba(239, 235, 228, 0.85) 0px, transparent 48%),
+      radial-gradient(at 50% 65%, rgba(232, 245, 233, 0.4) 0px, transparent 55%) !important;
+    color: var(--nt-fg) !important;
+    overflow-x: clip !important;
+    max-width: 100vw;
+    margin: 0;
   }
 
-  /* Interactive Spotlight Glow on Cards */
+  /* Guarantee 100% visibility of all legacy scroll/fade classes & React inline IntersectionObserver targets! */
+  html body .fade-in-up,
+  html body .fade-in,
+  html body .fade-in-scroll,
+  html body .glass-fade-in,
+  html body .reveal,
+  html body .ingredient-card,
+  html body .ingredient-card-5,
+  html body .review-card,
+  html body .article-card,
+  html body .testi-card,
+  html body .form-card,
+  html body .compare-row,
+  html body .pro-option-card,
+  html body .story-block {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html body .fade-in-up,
+  html body .fade-in,
+  html body .fade-in-scroll,
+  html body .glass-fade-in,
+  html body .reveal,
+  html body .compare-row,
+  html body .form-card,
+  html body .story-block,
+  html body :is(.ingredient-card, .ingredient-card-5, .review-card, .article-card, .testi-card, .pro-option-card):not(:hover) {
+    transform: none !important;
+  }
+
+  /* Clean Nature scroll progress bar (re-styles existing .glass-scroll-bar) */
+  html body .glass-scroll-bar {
+    height: 3px !important;
+    background: linear-gradient(90deg, #1B5E20 0%, #2E7D32 50%, #66BB6A 100%) !important;
+    box-shadow: none !important;
+    z-index: 100001 !important;
+  }
+
+  /* Soften background glass orbs to Nature sage & linen (eliminate old gold orb) */
+  html body .glass-orb {
+    opacity: 0.14 !important;
+    max-width: 100vw !important;
+  }
+  html body .glass-orb-1 { background: radial-gradient(circle, #A5D6A7, transparent 70%) !important; }
+  html body .glass-orb-2 { background: radial-gradient(circle, #DFD6CA, transparent 70%) !important; }
+  html body .glass-orb-3 { background: radial-gradient(circle, #C8E6C9, transparent 70%) !important; }
+
+  /* Fix legacy [class*="ingredient"] selector that accidentally turned .ingredients-grid-5 into a white card! */
+  html body .formulation-section .ingredients-grid-5,
+  html body .formulation-section .grid-row-3 {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Preserve original DENT-Z Logo Pattern 100% (protect from generic [class*="logo"] span rules & prevent line-wrapping) */
+  html body .dentz-logo-wrap,
+  html body .dentz-logo-wrap .dentz-logo-text {
+    white-space: nowrap !important;
+  }
+  html body .dentz-logo-wrap .dentz-logo-text {
+    background: linear-gradient(135deg, #0A2E1A 0%, #D4AF37 40%, #166534 60%, #D4AF37 85%, #0A2E1A 100%) !important;
+    background-size: 200% 100% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    letter-spacing: 1px !important;
+  }
+  html body .dentz-logo-footer .dentz-logo-text {
+    color: #FFFFFF !important;
+    background: none !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+  }
+
+  /* Accessible focus ring matching shadcn Nature */
+  html body :is(button, a, input, textarea, select, [role="button"]):focus-visible {
+    outline: 2px solid var(--nt-primary) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Interactive Nature Botanical Spotlight on Cards */
   .dz-spotlight-card {
     position: relative;
   }
@@ -6533,10 +6672,10 @@ try {
     inset: 0;
     border-radius: inherit;
     background: radial-gradient(
-      450px circle at var(--dz-mouse-x, 50%) var(--dz-mouse-y, 50%),
-      rgba(212, 175, 55, 0.14),
-      rgba(52, 211, 153, 0.06) 40%,
-      transparent 75%
+      420px circle at var(--dz-mouse-x, 50%) var(--dz-mouse-y, 50%),
+      rgba(46, 125, 50, 0.08),
+      rgba(200, 230, 201, 0.12) 38%,
+      transparent 72%
     );
     opacity: 0;
     transition: opacity 0.35s ease;
@@ -6548,24 +6687,722 @@ try {
   }
 
   /* ============================================================================
-     0. INFINITE CLINICAL BOTANICAL MARQUEE RIBBON (.dz-clinical-marquee)
+     1. SHADCN BUTTON SYSTEM + HERO-01 SLIDING ARROW-UP-RIGHT MICRO-INTERACTION
+     ============================================================================ */
+  html body .btn-cta,
+  html body button.btn-cta,
+  html body .btn-cta-small,
+  html body a.btn-cta-small,
+  html body .btn-primary,
+  html body .btn-primary-small,
+  html body button[type="submit"],
+  html body .donate-btn-primary,
+  html body .nc-submit-btn,
+  html body #custom-checkout-btn,
+  html body #tc-accept-btn,
+  html body .custom-consult-btn {
+    background: var(--nt-primary) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #256628 !important;
+    border-radius: var(--nt-radius) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 2px 6px rgba(27, 64, 32, 0.16), 0 10px 22px -10px rgba(46, 125, 50, 0.5) !important;
+    transition: background-color 0.25s ease, transform 0.28s var(--nt-ease), box-shadow 0.28s var(--nt-ease), padding 0.4s var(--nt-ease) !important;
+  }
+
+  html body .btn-cta:hover,
+  html body button.btn-cta:hover,
+  html body .btn-cta-small:hover,
+  html body a.btn-cta-small:hover,
+  html body .btn-primary:hover,
+  html body .btn-primary-small:hover,
+  html body button[type="submit"]:hover,
+  html body .donate-btn-primary:hover,
+  html body .nc-submit-btn:hover,
+  html body #custom-checkout-btn:hover,
+  html body #tc-accept-btn:hover,
+  html body .custom-consult-btn:hover {
+    background: var(--nt-primary-hover) !important;
+    border-color: var(--nt-primary-dark) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 6px 14px rgba(27, 64, 32, 0.18), 0 16px 30px -10px rgba(46, 125, 50, 0.58) !important;
+    filter: none !important;
+  }
+
+  /* Subtle organic sheen instead of flashy luxury shimmer */
+  html body .btn-cta::after,
+  html body .custom-consult-btn::before,
+  html body .consult-form-side .btn-cta::after {
+    opacity: 0.22 !important;
+  }
+
+  /* Outline Button (Nature screenshot: warm white fill + #DFD6CA border + dark text) */
+  html body .btn-outline,
+  html body .btn-outline-small {
+    background: var(--nt-card-pure) !important;
+    color: var(--nt-fg) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius) !important;
+    font-weight: 600 !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: all 0.22s var(--nt-ease) !important;
+  }
+
+  html body .btn-outline:hover,
+  html body .btn-outline-small:hover {
+    background: var(--nt-secondary) !important;
+    border-color: var(--nt-accent) !important;
+    color: var(--nt-primary-dark) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* hero-01 Signature Sliding Circle Arrow CTA (Header CTA & Hero CTA) */
+  .nt-hero01-cta {
+    border-radius: 9999px !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .nt-hero01-cta .nt-cta-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+    background: var(--nt-bg-soft);
+    color: var(--nt-primary-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 10px;
+    box-shadow: 0 2px 6px rgba(18, 38, 21, 0.18);
+    transition: transform 0.42s var(--nt-ease), background-color 0.25s ease;
+    pointer-events: none;
+  }
+
+  .nt-hero01-cta:hover .nt-cta-circle {
+    transform: translateX(3px) rotate(45deg);
+    background: #FFFFFF;
+  }
+
+  /* ============================================================================
+     2. HEADER & NAVIGATION — HERO-01 FLOATING GLASS CAPSULE + ZERO CROWDING
+     ============================================================================ */
+  html body header.header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 99990 !important;
+    background: rgba(248, 245, 240, 0.88) !important;
+    backdrop-filter: blur(18px) saturate(165%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(165%) !important;
+    border-bottom: 1px solid rgba(223, 214, 202, 0.85) !important;
+    box-shadow: 0 4px 20px -10px rgba(45, 36, 32, 0.12) !important;
+    transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+  }
+
+  html body header.header .nav-container {
+    max-width: 1440px !important;
+    width: 100% !important;
+    min-height: 76px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 10px 1.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    flex-wrap: nowrap !important;
+    box-sizing: border-box !important;
+    border: 1px solid transparent !important;
+    transition: all 0.42s var(--nt-ease) !important;
+  }
+
+  /* hero-01 Sticky Floating Rounded Capsule on Desktop Scroll */
+  @media (min-width: 1241px) {
+    html body header.header.header-scrolled {
+      background: transparent !important;
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      pointer-events: none !important;
+    }
+    html body header.header.header-scrolled::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      background: linear-gradient(180deg, rgba(248, 245, 240, 0.96) 0%, rgba(248, 245, 240, 0.72) 45%, rgba(248, 245, 240, 0) 100%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    html body header.header.header-scrolled .nav-container {
+      pointer-events: auto !important;
+      max-width: min(1380px, calc(100% - 36px)) !important;
+      min-height: 66px !important;
+      padding: 8px 14px 8px 24px !important;
+      background: rgba(255, 254, 251, 0.86) !important;
+      backdrop-filter: blur(20px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+      border: 1px solid rgba(223, 214, 202, 0.95) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset, 0 20px 44px -18px rgba(27, 46, 30, 0.22) !important;
+      transform: translateY(10px) !important;
+    }
+  }
+
+  .header .logo {
+    flex-shrink: 0 !important;
+  }
+
+  /* Hide hamburger button since navigation tabs & action buttons are cleanly accessible */
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  /* hero-01 NavigationMenu Pill Dock (bg-muted p-1 rounded-full) */
+  html body .nav-links.desktop-only {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    background: var(--nt-muted) !important;
+    border: 1px solid var(--nt-border) !important;
+    padding: 4px !important;
+    border-radius: 9999px !important;
+    flex-shrink: 1 !important;
+  }
+
+  html body .nav-links.desktop-only a {
+    color: var(--nt-muted-fg) !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    padding: 7px 15px !important;
+    border-radius: 9999px !important;
+    transition: all 0.22s var(--nt-ease) !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    border: 1px solid transparent !important;
+  }
+
+  html body .nav-links.desktop-only a::after {
+    display: none !important;
+  }
+
+  html body .nav-links.desktop-only a:hover {
+    color: var(--nt-heading) !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+  }
+
+  html body .nav-links.desktop-only a.dz-nav-active {
+    background: var(--nt-card-pure) !important;
+    color: var(--nt-primary-dark) !important;
+    border-color: rgba(223, 214, 202, 0.8) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+  }
+
+  /* Header Right Actions (targets BOTH <button> and <a class="btn-cta-small">!) */
+  html body .header-actions.desktop-only {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  html body .header-actions.desktop-only > :is(button, a) {
+    margin: 0 !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    height: 40px !important;
+    font-size: 0.85rem !important;
+    padding: 0 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Quiz Button -> Nature Secondary Variant (#E8F5E9 fill + #1B5E20 text) */
+  html body .header-actions.desktop-only .btn-primary {
+    background: var(--nt-secondary) !important;
+    color: var(--nt-secondary-fg) !important;
+    border: 1px solid var(--nt-accent) !important;
+    border-radius: var(--nt-radius) !important;
+    box-shadow: none !important;
+  }
+
+  html body .header-actions.desktop-only .btn-primary:hover {
+    background: var(--nt-accent) !important;
+    color: var(--nt-primary-dark) !important;
+    border-color: #A5D6A7 !important;
+    box-shadow: none !important;
+  }
+
+  /* Login / Profile Button -> Nature Outline Variant */
+  html body .header-actions.desktop-only .btn-outline-small {
+    background: var(--nt-card-pure) !important;
+    color: var(--nt-fg) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius) !important;
+  }
+
+  /* Order CTA Link/Button -> hero-01 Pill CTA in Nature Primary #2E7D32 */
+  html body .header-actions.desktop-only .btn-cta-small {
+    background: var(--nt-primary) !important;
+    color: #FFFFFF !important;
+    border: 1px solid #256628 !important;
+    border-radius: 9999px !important;
+    padding: 0 6px 0 16px !important;
+    height: 40px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 8px 18px -8px rgba(46, 125, 50, 0.55) !important;
+  }
+
+  html body .header-actions.desktop-only .btn-cta-small .nt-cta-circle {
+    width: 28px;
+    height: 28px;
+    margin-left: 8px;
+  }
+
+  /* Medium laptops (993px - 1240px): wrap into 2 clean rows so zero buttons clip */
+  @media (min-width: 993px) and (max-width: 1240px) {
+    html body header.header .nav-container {
+      flex-wrap: wrap !important;
+      padding: 10px 1.5rem !important;
+      gap: 8px !important;
+    }
+    html body .nav-links.desktop-only {
+      order: 3 !important;
+      width: 100% !important;
+      justify-content: center !important;
+      background: transparent !important;
+      border: none !important;
+      border-top: 1px solid var(--nt-border) !important;
+      border-radius: 0 !important;
+      padding: 6px 0 2px !important;
+    }
+  }
+
+  /* ============================================================================
+     3. HERO SECTION (#hero) — HERO-01 ORGANIC AURA + STAGGERED REVEAL + SAGE STAGE
+     ============================================================================ */
+  html body section#hero.hero {
+    padding: 3rem 0 4.5rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background:
+      radial-gradient(ellipse 52% 55% at 78% 45%, rgba(200, 230, 201, 0.55) 0%, transparent 70%),
+      radial-gradient(ellipse 46% 42% at 15% 15%, rgba(232, 245, 233, 0.8) 0%, transparent 68%),
+      radial-gradient(ellipse 45% 40% at 50% 95%, rgba(239, 235, 228, 0.9) 0%, transparent 70%),
+      var(--nt-bg) !important;
+  }
+
+  /* Subtle organic architectural grid backdrop */
+  .nt-hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(110, 92, 76, 0.065) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(110, 92, 76, 0.065) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse 78% 68% at 50% 42%, #000 25%, transparent 78%);
+    mask-image: radial-gradient(ellipse 78% 68% at 50% 42%, #000 25%, transparent 78%);
+  }
+
+  .nt-hero-decor {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .nt-leaf {
+    position: absolute;
+    display: block;
+    color: #81C784;
+    opacity: 0.42;
+    animation: ntLeafSway 9s ease-in-out infinite alternate;
+  }
+  .nt-leaf svg { width: 100%; height: 100%; display: block; }
+  .nt-leaf.l1 { width: 56px; height: 56px; top: 8%; left: 2%; transform: rotate(-20deg); }
+  .nt-leaf.l2 { width: 42px; height: 42px; top: 12%; right: 2.5%; color: #66BB6A; animation-delay: -3s; }
+  .nt-leaf.l3 { width: 32px; height: 32px; bottom: 10%; left: 46%; opacity: 0.32; animation-delay: -5s; }
+
+  @keyframes ntLeafSway {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-12px) rotate(8deg); }
+  }
+
+  /* Staggered hero-01 entrance (uses BOTH fill-mode + explicit opacity:1 fallback so h1 NEVER disappears!) */
+  @keyframes ntHeroSlideUp {
+    0% { transform: translate3d(0, 22px, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+
+  html body section#hero .hero-container {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 1340px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.14fr) minmax(0, 0.86fr) !important;
+    gap: 3rem !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hero Left Card — Structured shadcn Nature Card */
+  html body section#hero .hero-container .hero-content {
+    background: rgba(255, 254, 251, 0.94) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-top: 3px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius-xl) !important;
+    padding: 2.75rem 2.65rem !important;
+    box-shadow: var(--nt-shadow-lg) !important;
+    text-align: left !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    animation: ntHeroSlideUp 0.75s var(--nt-ease) both !important;
+  }
+
+  /* Hero Announcement Badge (Nature Secondary Badge + Live Pulse Dot) */
+  html body section#hero .hero-container .hero-content .badge-new {
+    background: var(--nt-secondary) !important;
+    color: var(--nt-secondary-fg) !important;
+    border: 1px solid var(--nt-accent) !important;
+    padding: 6px 14px !important;
+    border-radius: var(--nt-radius) !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 1.25rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+  }
+
+  .nt-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--nt-primary);
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .nt-live-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1.5px solid var(--nt-primary);
+    opacity: 0.55;
+    animation: ntDotPulse 2s ease-out infinite;
+  }
+  @keyframes ntDotPulse {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+
+  /* Hero Headline — Guaranteed 100% Visible + Organic Botanical Highlight */
+  html body section#hero .hero-container .hero-content h1 {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    font-size: clamp(2.05rem, 3.2vw, 3rem) !important;
+    line-height: 1.28 !important;
+    color: var(--nt-heading) !important;
+    -webkit-text-fill-color: var(--nt-heading) !important;
+    background: none !important;
+    margin: 0 0 1.15rem 0 !important;
+  }
+
+  html body section#hero .hero-container .hero-content h1 .highlight {
+    color: var(--nt-primary) !important;
+    -webkit-text-fill-color: var(--nt-primary) !important;
+    position: relative !important;
+    display: inline-block !important;
+    z-index: 1 !important;
+  }
+
+  html body section#hero .hero-container .hero-content h1 .highlight::after {
+    content: '' !important;
+    position: absolute !important;
+    left: -2px !important;
+    right: -2px !important;
+    width: calc(100% + 4px) !important;
+    bottom: 4px !important;
+    height: 11px !important;
+    background: var(--nt-accent) !important;
+    opacity: 0.75 !important;
+    border-radius: 4px !important;
+    z-index: -1 !important;
+  }
+
+  html body section#hero .hero-container .hero-content .hero-subtitle {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: var(--nt-muted-fg) !important;
+    -webkit-text-fill-color: var(--nt-muted-fg) !important;
+    font-size: 1.02rem !important;
+    line-height: 1.75 !important;
+    margin: 0 0 1.75rem 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Hero Main CTA Button (hero-01 Get Started Pill Style) */
+  html body section#hero .hero-container .hero-content .btn-cta {
+    width: 100% !important;
+    padding: 0.95rem 1.25rem 0.95rem 1.75rem !important;
+    font-size: 1.08rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    background: var(--nt-primary) !important;
+    border: 1px solid #256628 !important;
+    box-shadow: 0 14px 30px -10px rgba(46, 125, 50, 0.55) !important;
+    margin: 0 0 0.75rem 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#hero .hero-container .hero-content .btn-cta .nt-cta-circle {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Hero 4 Checkmark Feature Badges — Symmetrical 2x2 Nature Secondary Grid */
+  html body section#hero .hero-container .hero-content .hero-actions-row > div {
+    width: 100% !important;
+  }
+
+  html body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  html body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] > span {
+    background: var(--nt-secondary) !important;
+    border: 1px solid var(--nt-accent) !important;
+    color: var(--nt-secondary-fg) !important;
+    padding: 9px 12px !important;
+    border-radius: var(--nt-radius) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  /* Hero 3 Clinical Trust Stats — Clean Horizontal Sub-Cards */
+  html body section#hero .hero-container .hero-content .hero-trust {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 1.5rem !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px dashed var(--nt-border) !important;
+  }
+
+  html body section#hero .hero-container .hero-content .trust-stat {
+    background: var(--nt-bg-soft) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-left: 3px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius) !important;
+    padding: 0.85rem 1.15rem !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    min-width: 0 !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: transform 0.25s var(--nt-ease), border-color 0.25s ease, background 0.25s ease !important;
+  }
+
+  html body section#hero .hero-container .hero-content .trust-stat:hover {
+    transform: translateX(4px) !important;
+    background: var(--nt-card-pure) !important;
+    border-color: var(--nt-accent) !important;
+    border-left-color: var(--nt-primary) !important;
+  }
+
+  html body section#hero .hero-container .hero-content .trust-stat > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    min-width: 0 !important;
+  }
+
+  html body section#hero .hero-container .hero-content .trust-stat strong {
+    font-size: 0.9rem !important;
+    line-height: 1.35 !important;
+    color: var(--nt-heading) !important;
+  }
+
+  html body section#hero .hero-container .hero-content .trust-stat span {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    color: var(--nt-muted-fg) !important;
+  }
+
+  /* Hero Right Product Stage — Organic Botanical Sage Showcase */
+  html body section#hero .hero-container .hero-product-box {
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.88) 0%, transparent 55%),
+      linear-gradient(155deg, #EEF7EE 0%, #D4ECD6 55%, #C8E6C9 100%) !important;
+    border: 1px solid #B7DFB9 !important;
+    border-radius: var(--nt-radius-xl) !important;
+    padding: 2.75rem 2.15rem 3.25rem !important;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset, var(--nt-shadow-lg) !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    animation: ntHeroSlideUp 0.85s var(--nt-ease) 0.1s both !important;
+  }
+
+  .dz-hero-orbital-svg {
+    position: absolute;
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+    animation: dzOrbitSpin 34s linear infinite;
+  }
+
+  @keyframes dzOrbitSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  html body section#hero .hero-container .hero-img {
+    position: relative !important;
+    z-index: 2 !important;
+    border-radius: var(--nt-radius-lg) !important;
+    border: 2px solid rgba(255, 255, 255, 0.92) !important;
+    box-shadow: 0 22px 44px -14px rgba(27, 64, 32, 0.32) !important;
+    max-width: 100% !important;
+  }
+
+  html body section#hero .social-proof-bubble {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    box-shadow: var(--nt-shadow-md) !important;
+    padding: 7px 14px !important;
+    border-radius: var(--nt-radius) !important;
+    top: 16px !important;
+    right: 16px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: var(--nt-primary-dark) !important;
+    z-index: 5 !important;
+  }
+
+  html body section#hero .floating-badge.badge-1 {
+    background: var(--nt-primary) !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFFFFF !important;
+    border-radius: var(--nt-radius) !important;
+    box-shadow: var(--nt-shadow-green) !important;
+    padding: 9px 20px !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    bottom: -16px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 6 !important;
+  }
+
+  /* ============================================================================
+     4. HERO-01 BRAND-SLIDER STYLE CLINICAL MARQUEE (.dz-clinical-marquee)
      ============================================================================ */
   .dz-clinical-marquee {
     width: 100%;
-    background: linear-gradient(90deg, #051B0F 0%, #0A2E1A 50%, #051B0F 100%);
-    border-top: 1px solid rgba(212, 175, 55, 0.45);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.45);
-    padding: 14px 0;
+    background: var(--nt-bg-soft);
+    border-top: 1px solid var(--nt-border);
+    border-bottom: 1px solid var(--nt-border);
+    padding: 18px 0 20px;
     overflow: hidden;
     position: relative;
-    z-index: 10;
-    box-shadow: 0 10px 30px rgba(5, 27, 15, 0.12);
+    z-index: 5;
+  }
+
+  .nt-marquee-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding: 0 16px;
+  }
+
+  .nt-marquee-line {
+    height: 1px;
+    width: 120px;
+    background: linear-gradient(90deg, transparent, var(--nt-border-strong));
+  }
+  .nt-marquee-line.right {
+    background: linear-gradient(90deg, var(--nt-border-strong), transparent);
+  }
+
+  .nt-marquee-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--nt-muted-fg);
+    text-align: center;
+  }
+
+  .dz-marquee-viewport {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
 
   .dz-marquee-track {
     display: flex;
+    gap: 14px;
     width: max-content;
-    animation: dzMarqueeScroll 36s linear infinite;
+    animation: dzMarqueeScroll 34s linear infinite;
   }
 
   .dz-clinical-marquee:hover .dz-marquee-track {
@@ -6575,19 +7412,23 @@ try {
   .dz-marquee-item {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
-    padding: 0 32px;
-    color: #F4F9F5;
-    font-size: 0.82rem;
+    gap: 10px;
+    padding: 8px 18px;
+    background: var(--nt-card-pure);
+    border: 1px solid var(--nt-border);
+    border-radius: var(--nt-radius);
+    color: var(--nt-heading);
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
     white-space: nowrap;
+    box-shadow: var(--nt-shadow-xs);
   }
 
   .dz-marquee-star {
-    color: #D4AF37;
-    font-size: 0.95rem;
+    color: var(--nt-primary);
+    font-size: 0.85rem;
   }
 
   @keyframes dzMarqueeScroll {
@@ -6596,430 +7437,57 @@ try {
   }
 
   /* ============================================================================
-     1. HEADER & NAVIGATION — ZERO-CROWDING LAYOUT FOR DESKTOP & MOBILE
-     ============================================================================ */
-  header.header, body .header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    z-index: 99990 !important;
-    background: rgba(255, 255, 255, 0.92) !important;
-    backdrop-filter: blur(24px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border-bottom: 1.5px solid rgba(212, 175, 55, 0.35) !important;
-    box-shadow: 0 6px 30px rgba(10, 46, 26, 0.07) !important;
-    transition: background 0.3s ease, box-shadow 0.3s ease !important;
-  }
-
-  header.header.header-scrolled, body .header.header-scrolled {
-    background: rgba(255, 255, 255, 0.97) !important;
-    box-shadow: 0 12px 36px rgba(10, 46, 26, 0.11) !important;
-    border-bottom-color: rgba(212, 175, 55, 0.55) !important;
-  }
-
-  /* Wide Desktop Container so Logo + 5 Links + 4 Logged-in Buttons NEVER crowd on 1366px screens */
-  .header .nav-container {
-    max-width: 1480px !important;
-    width: 100% !important;
-    min-height: 80px !important;
-    height: auto !important;
-    padding: 10px 1.75rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 0.85rem !important;
-    flex-wrap: nowrap !important;
-  }
-
-  .header .logo {
-    flex-shrink: 0 !important;
-  }
-
-  /* Keep hamburger button hidden since tabs and actions are directly visible */
-  .mobile-menu-btn {
-    display: none !important;
-  }
-
-  /* Desktop Nav Links Pill Dock */
-  .nav-links.desktop-only {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 4px !important;
-    background: #F2F8F4 !important;
-    border: 1px solid rgba(20, 83, 45, 0.12) !important;
-    padding: 5px 8px !important;
-    border-radius: 999px !important;
-    flex-shrink: 1 !important;
-  }
-
-  .nav-links.desktop-only a {
-    color: #133320 !important;
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
-    padding: 7px 13px !important;
-    border-radius: 999px !important;
-    transition: all 0.25s var(--dz-ease-out) !important;
-    text-decoration: none !important;
-    white-space: nowrap !important;
-  }
-
-  .nav-links.desktop-only a::after {
-    display: none !important;
-  }
-
-  .nav-links.desktop-only a:hover,
-  .nav-links.desktop-only a.dz-nav-active {
-    background: linear-gradient(135deg, #0F4226 0%, #166534 100%) !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 4px 14px rgba(15, 66, 38, 0.2) !important;
-  }
-
-  /* Desktop Header Actions — Spacious & Well-Proportioned */
-  .header-actions.desktop-only {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 8px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .header-actions.desktop-only button {
-    margin: 0 !important;
-    white-space: nowrap !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    height: 40px !important;
-    border-radius: 999px !important;
-    font-size: 0.84rem !important;
-    padding: 0 15px !important;
-    transition: all 0.28s var(--dz-ease-out) !important;
-  }
-
-  /* Truncate very long user names inside profile button so it never pushes other buttons off-screen */
-  .header-actions.desktop-only button span {
-    max-width: 130px !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-  }
-
-  .header-actions .btn-primary {
-    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%) !important;
-    color: #0A2E1A !important;
-    border: 1.5px solid rgba(22, 101, 52, 0.3) !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 12px rgba(20, 83, 45, 0.08) !important;
-  }
-
-  .header-actions .btn-primary:hover {
-    background: linear-gradient(135deg, #14532D 0%, #0A2E1A 100%) !important;
-    color: #FFFFFF !important;
-    border-color: #D4AF37 !important;
-    transform: translateY(-2px) !important;
-  }
-
-  .header-actions .btn-outline-small {
-    background: #FFFFFF !important;
-    color: #133320 !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.5) !important;
-    font-weight: 600 !important;
-    box-shadow: 0 4px 12px rgba(10, 46, 26, 0.05) !important;
-  }
-
-  .header-actions .btn-outline-small:hover {
-    border-color: #D4AF37 !important;
-    background: #FBF5E6 !important;
-    transform: translateY(-2px) !important;
-  }
-
-  .header-actions .btn-cta-small {
-    background: linear-gradient(135deg, #0A2E1A 0%, #166534 55%, #0F4226 100%) !important;
-    color: #FFFFFF !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.75) !important;
-    font-weight: 700 !important;
-    box-shadow: 0 8px 20px rgba(20, 83, 45, 0.25) !important;
-  }
-
-  .header-actions .btn-cta-small:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 12px 26px rgba(20, 83, 45, 0.35), 0 0 15px rgba(212, 175, 55, 0.3) !important;
-  }
-
-  /* On medium laptops (993px - 1240px), wrap header into 2 spacious rows so buttons NEVER get cut off */
-  @media (min-width: 993px) and (max-width: 1240px) {
-    .header .nav-container {
-      flex-wrap: wrap !important;
-      padding: 10px 1.5rem !important;
-      gap: 8px !important;
-    }
-    .nav-links.desktop-only {
-      order: 3 !important;
-      width: 100% !important;
-      justify-content: center !important;
-      background: transparent !important;
-      border: none !important;
-      border-top: 1px solid rgba(20, 83, 45, 0.08) !important;
-      border-radius: 0 !important;
-      padding: 6px 0 2px !important;
-    }
-  }
-
-  /* ============================================================================
-     2. HERO SECTION (#hero) — SPACIOUS 2-COLUMN SHOWCASE
-     ============================================================================ */
-  body section#hero.hero {
-    padding: 3.5rem 0 5rem !important;
-    position: relative !important;
-    overflow: hidden !important;
-    background:
-      radial-gradient(circle at 80% 45%, rgba(52, 211, 153, 0.2) 0%, rgba(212, 175, 55, 0.12) 35%, transparent 65%),
-      linear-gradient(135deg, #EBF6F0 0%, #F5FAF7 50%, #FBF8F0 100%) !important;
-  }
-
-  body section#hero .hero-container {
-    max-width: 1340px !important;
-    margin: 0 auto !important;
-    padding: 0 2rem !important;
-    display: grid !important;
-    grid-template-columns: 1.15fr 0.85fr !important;
-    gap: 3.25rem !important;
-    align-items: center !important;
-  }
-
-  /* Hero Left Content Box */
-  body section#hero .hero-container .hero-content {
-    background: rgba(255, 255, 255, 0.94) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.38) !important;
-    border-top: 4px solid #D4AF37 !important;
-    border-radius: 32px !important;
-    padding: 3rem 2.75rem !important;
-    box-shadow: var(--dz-shadow-lg) !important;
-    text-align: left !important;
-    max-width: 100% !important;
-  }
-
-  body section#hero .hero-container .hero-content .badge-new {
-    background: linear-gradient(135deg, #051B0F 0%, #14532D 100%) !important;
-    color: #F5E27A !important;
-    border: 1px solid rgba(212, 175, 55, 0.75) !important;
-    padding: 8px 20px !important;
-    border-radius: 999px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 1.4px !important;
-    margin-bottom: 1.35rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-
-  body section#hero .hero-container .hero-content h1 {
-    font-size: clamp(2.1rem, 3.3vw, 3.05rem) !important;
-    line-height: 1.28 !important;
-    color: #062012 !important;
-    margin-bottom: 1.25rem !important;
-  }
-
-  body section#hero .hero-container .hero-content .hero-subtitle {
-    color: #2E4738 !important;
-    font-size: 1.04rem !important;
-    line-height: 1.75 !important;
-    margin: 0 0 2rem 0 !important;
-    max-width: 100% !important;
-  }
-
-  /* Hero Main CTA Button */
-  body section#hero .hero-container .hero-content .btn-cta {
-    width: 100% !important;
-    padding: 1.2rem 2.25rem !important;
-    font-size: 1.15rem !important;
-    font-weight: 700 !important;
-    border-radius: 999px !important;
-    background: linear-gradient(135deg, #062012 0%, #166534 50%, #0A2E1A 100%) !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.7) !important;
-    box-shadow: 0 16px 36px rgba(10, 46, 26, 0.28) !important;
-    margin: 0 0 0.75rem 0 !important;
-  }
-
-  /* Hero 4 Checkmark Feature Badges — Symmetrical 2x2 Grid so they NEVER wrap unevenly */
-  body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
-    margin-top: 0.75rem !important;
-    width: 100% !important;
-  }
-
-  body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] > span {
-    background: #F2F9F5 !important;
-    border: 1px solid rgba(22, 101, 52, 0.22) !important;
-    color: #0A2E1A !important;
-    padding: 10px 14px !important;
-    border-radius: 14px !important;
-    font-size: 0.86rem !important;
-    font-weight: 600 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 8px !important;
-    width: 100% !important;
-    text-align: left !important;
-  }
-
-  /* Hero 3 Clinical Trust Stats — Full-Width Horizontal Cards so Expanded English Font NEVER Squishes */
-  body section#hero .hero-container .hero-content .hero-trust {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    margin-top: 1.75rem !important;
-    padding-top: 1.75rem !important;
-    border-top: 1px solid rgba(20, 83, 45, 0.12) !important;
-  }
-
-  body section#hero .hero-container .hero-content .trust-stat {
-    background: linear-gradient(90deg, #FFFFFF 0%, #F6FBF8 100%) !important;
-    border: 1px solid rgba(212, 175, 55, 0.38) !important;
-    border-left: 4px solid #166534 !important;
-    border-radius: 18px !important;
-    padding: 0.9rem 1.25rem !important;
-    text-align: left !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 14px !important;
-    min-width: 0 !important;
-    box-shadow: 0 6px 16px rgba(10, 46, 26, 0.05) !important;
-    transition: transform 0.3s ease, border-color 0.3s ease !important;
-  }
-
-  body section#hero .hero-container .hero-content .trust-stat:hover {
-    transform: translateX(4px) !important;
-    border-color: #D4AF37 !important;
-  }
-
-  body section#hero .hero-container .hero-content .trust-stat > div {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 2px !important;
-  }
-
-  body section#hero .hero-container .hero-content .trust-stat strong {
-    font-size: 0.92rem !important;
-    line-height: 1.35 !important;
-    color: #0A2E1A !important;
-  }
-
-  body section#hero .hero-container .hero-content .trust-stat span {
-    font-size: 0.78rem !important;
-    line-height: 1.35 !important;
-    color: #4A6355 !important;
-  }
-
-  /* Hero Right Product Showcase Box */
-  body section#hero .hero-container .hero-product-box {
-    background: linear-gradient(145deg, #072213 0%, #14532D 55%, #051B0F 100%) !important;
-    border: 2px solid rgba(212, 175, 55, 0.55) !important;
-    border-radius: 36px !important;
-    padding: 3rem 2.25rem 3.5rem !important;
-    box-shadow: 0 32px 75px -12px rgba(5, 27, 15, 0.38), 0 0 35px rgba(212, 175, 55, 0.2) !important;
-    position: relative !important;
-  }
-
-  .dz-hero-orbital-svg {
-    position: absolute;
-    inset: -16px;
-    width: calc(100% + 32px);
-    height: calc(100% + 32px);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.7;
-    animation: dzOrbitSpin 30s linear infinite;
-  }
-
-  @keyframes dzOrbitSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  body section#hero .hero-container .hero-img {
-    position: relative !important;
-    z-index: 2 !important;
-    border-radius: 24px !important;
-    border: 1px solid rgba(212, 175, 55, 0.4) !important;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4) !important;
-  }
-
-  body section#hero .social-proof-bubble {
-    display: inline-flex !important;
-    background: rgba(255, 255, 255, 0.96) !important;
-    border: 1.5px solid #D4AF37 !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
-    padding: 8px 18px !important;
-    border-radius: 999px !important;
-    top: 16px !important;
-    right: 16px !important;
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-    color: #0A2E1A !important;
-    z-index: 5 !important;
-  }
-
-  body section#hero .floating-badge.badge-1 {
-    background: linear-gradient(135deg, #D4AF37 0%, #F5E27A 50%, #B8860B 100%) !important;
-    color: #051B0F !important;
-    border: 2px solid #FFFFFF !important;
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3) !important;
-    padding: 10px 24px !important;
-    font-size: 0.92rem !important;
-    font-weight: 800 !important;
-    white-space: nowrap !important;
-    bottom: -18px !important;
-    z-index: 6 !important;
-  }
-
-  /* ============================================================================
-     3. SECTION HEADERS & CONTAINERS (GENEROUS BREATHING ROOM)
+     5. SECTION HEADERS, KICKER BADGES & CONTAINERS
      ============================================================================ */
   section > .container {
     max-width: 1320px !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
+    box-sizing: border-box !important;
   }
 
-  .kicker {
+  html body .kicker,
+  html body .formulation-section .kicker {
     display: inline-flex !important;
     align-items: center !important;
     gap: 8px !important;
-    background: linear-gradient(135deg, #0A2E1A 0%, #166534 100%) !important;
-    border: 1px solid rgba(212, 175, 55, 0.65) !important;
-    color: #F5E27A !important;
-    padding: 7px 18px !important;
-    border-radius: 999px !important;
-    font-size: 0.78rem !important;
+    background: var(--nt-secondary) !important;
+    border: 1px solid var(--nt-accent) !important;
+    color: var(--nt-secondary-fg) !important;
+    padding: 6px 14px !important;
+    border-radius: var(--nt-radius) !important;
+    font-size: 0.76rem !important;
     font-weight: 700 !important;
-    letter-spacing: 1.8px !important;
+    letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.9rem !important;
+    box-shadow: none !important;
+  }
+
+  html body .kicker::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--nt-primary);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  html body h2,
+  html body .h2-large {
+    color: var(--nt-heading) !important;
   }
 
   /* ============================================================================
-     4. KNOWLEDGE HUB (#knowledge) — SPACIOUS JOURNAL CARDS & CONTROLS
+     6. KNOWLEDGE HUB (#knowledge) — SHADCN JOURNAL CARDS & SQUARE-RADIUS CONTROLS
      ============================================================================ */
-  section#knowledge.knowledge-section {
-    background: linear-gradient(180deg, #FFFFFF 0%, #EEF6F1 100%) !important;
-    padding: 6rem 0 !important;
+  html body section#knowledge.knowledge-section {
+    background: linear-gradient(180deg, var(--nt-bg) 0%, var(--nt-bg-soft) 100%) !important;
+    padding: 5.5rem 0 !important;
   }
 
-  section#knowledge .section-header {
+  html body section#knowledge .section-header {
     display: flex !important;
     align-items: flex-end !important;
     justify-content: space-between !important;
@@ -7031,267 +7499,330 @@ try {
   .dz-carousel-controls {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
   }
 
   .dz-carousel-btn {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: #FFFFFF;
-    border: 1.5px solid rgba(20, 83, 45, 0.22);
-    color: #0F4226;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--nt-radius);
+    background: var(--nt-card-pure);
+    border: 1px solid var(--nt-border);
+    color: var(--nt-heading);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: var(--dz-shadow-sm);
-    transition: all 0.28s var(--dz-ease-out);
+    box-shadow: var(--nt-shadow-xs);
+    transition: all 0.22s var(--nt-ease);
   }
 
   .dz-carousel-btn:hover {
-    background: linear-gradient(135deg, #0A2E1A, #166534);
-    color: #F5E27A;
-    border-color: #D4AF37;
+    background: var(--nt-primary);
+    color: #FFFFFF;
+    border-color: var(--nt-primary);
     transform: translateY(-2px);
   }
 
-  section#knowledge .view-all-link {
-    background: linear-gradient(135deg, #0A2E1A 0%, #166534 100%) !important;
-    border: 1px solid rgba(212, 175, 55, 0.55) !important;
-    color: #FFFFFF !important;
-    padding: 11px 24px !important;
-    border-radius: 999px !important;
-    font-size: 0.92rem !important;
+  html body section#knowledge .view-all-link {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    color: var(--nt-primary-dark) !important;
+    padding: 10px 20px !important;
+    border-radius: var(--nt-radius) !important;
+    font-size: 0.9rem !important;
     font-weight: 700 !important;
-    box-shadow: 0 8px 20px rgba(10, 46, 26, 0.16) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
     white-space: nowrap !important;
+    text-decoration: none !important;
+    transition: all 0.22s var(--nt-ease) !important;
   }
 
-  section#knowledge .articles-carousel {
-    padding: 1.25rem 0.5rem 2.5rem !important;
-    gap: 2rem !important;
+  html body section#knowledge .view-all-link:hover {
+    background: var(--nt-secondary) !important;
+    border-color: var(--nt-accent) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  html body section#knowledge .articles-carousel {
+    padding: 1rem 0.25rem 2rem !important;
+    gap: 1.5rem !important;
     scroll-behavior: smooth !important;
   }
 
-  section#knowledge .article-card {
-    flex: 0 0 350px !important;
-    background: #FFFFFF !important;
-    border: 1px solid rgba(20, 83, 45, 0.14) !important;
-    border-top: 3px solid #166534 !important;
-    border-radius: 26px !important;
-    box-shadow: var(--dz-shadow-md) !important;
-    transition: all 0.4s var(--dz-ease-out) !important;
+  html body section#knowledge .article-card {
+    flex: 0 0 345px !important;
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-top: 3px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    box-shadow: var(--nt-shadow-sm) !important;
+    transition: transform 0.35s var(--nt-ease), box-shadow 0.35s var(--nt-ease), border-color 0.25s ease !important;
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
   }
 
-  section#knowledge .article-card:hover {
-    transform: translateY(-10px) !important;
-    border-color: #D4AF37 !important;
-    box-shadow: var(--dz-shadow-gold) !important;
+  html body section#knowledge .article-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: #A5D6A7 !important;
+    border-top-color: var(--nt-primary) !important;
+    box-shadow: var(--nt-shadow-green) !important;
   }
 
-  section#knowledge .article-img {
-    height: 220px !important;
+  html body section#knowledge .article-img {
+    height: 215px !important;
     position: relative !important;
+    border-bottom: 1px solid var(--nt-border) !important;
   }
 
   .dz-article-badge {
     position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(5, 27, 15, 0.84);
-    backdrop-filter: blur(10px);
-    color: #F5E27A;
-    border: 1px solid rgba(212, 175, 55, 0.55);
-    padding: 5px 14px;
-    border-radius: 999px;
-    font-size: 0.72rem;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 254, 251, 0.95);
+    backdrop-filter: blur(8px);
+    color: var(--nt-primary-dark);
+    border: 1px solid var(--nt-accent);
+    padding: 4px 11px;
+    border-radius: var(--nt-radius-sm);
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     z-index: 3;
+    box-shadow: var(--nt-shadow-xs);
   }
 
-  section#knowledge .article-content {
-    padding: 1.75rem !important;
-    background: #FFFFFF !important;
+  html body section#knowledge .article-content {
+    padding: 1.5rem !important;
+    background: var(--nt-card-pure) !important;
     flex: 1 !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    gap: 0.75rem !important;
+    gap: 0.7rem !important;
+  }
+
+  html body section#knowledge .article-content h3 {
+    color: var(--nt-heading) !important;
+  }
+
+  html body section#knowledge .article-content p {
+    color: var(--nt-muted-fg) !important;
   }
 
   .dz-article-readmore {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-weight: 700;
-    color: #166534;
+    color: var(--nt-primary);
     margin-top: auto;
     padding-top: 0.85rem;
-    border-top: 1px solid rgba(20, 83, 45, 0.1);
+    border-top: 1px dashed var(--nt-border);
+  }
+
+  .dz-article-readmore svg {
+    transition: transform 0.25s var(--nt-ease);
+  }
+  html body section#knowledge .article-card:hover .dz-article-readmore svg {
+    transform: translateX(4px);
   }
 
   /* ============================================================================
-     5. FORMULATION & KEY INGREDIENTS (#symptoms) — SPACIOUS BENTO GRID
+     7. FORMULATION & KEY INGREDIENTS (#symptoms) — BENTO GRID + PH CONTROL BAR
      ============================================================================ */
-  section#symptoms.formulation-section {
+  html body section#symptoms.formulation-section {
     background:
-      radial-gradient(circle at 10% 15%, rgba(52, 211, 153, 0.2) 0%, transparent 45%),
-      radial-gradient(circle at 90% 85%, rgba(212, 175, 55, 0.18) 0%, transparent 45%),
-      linear-gradient(180deg, #E3F2EA 0%, #D8EDE2 50%, #EAF5EE 100%) !important;
-    padding: 6.5rem 0 !important;
+      radial-gradient(circle at 12% 15%, rgba(200, 230, 201, 0.55) 0%, transparent 45%),
+      radial-gradient(circle at 88% 85%, rgba(239, 235, 228, 0.9) 0%, transparent 45%),
+      linear-gradient(180deg, #EEF6EE 0%, #F4F8F2 55%, var(--nt-bg) 100%) !important;
+    padding: 6rem 0 !important;
   }
 
-  body .formulation-section .ingredients-grid-5 {
+  html body .formulation-section .ingredients-grid-5 {
     display: grid !important;
-    grid-template-columns: repeat(6, 1fr) !important;
-    gap: 1.75rem !important;
-    margin-top: 3rem !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin-top: 2.75rem !important;
   }
 
-  body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(1),
-  body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(2) {
+  html body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(1),
+  html body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(2) {
     grid-column: span 3 !important;
     margin-top: 0 !important;
   }
 
-  body .formulation-section .ingredients-grid-5 > .grid-row-3 {
+  html body .formulation-section .ingredients-grid-5 > .grid-row-3 {
     grid-column: 1 / -1 !important;
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.75rem !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
   }
 
-  body .formulation-section .ingredient-card-5 {
-    background: rgba(255, 255, 255, 0.94) !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
-    border-radius: 28px !important;
-    padding: 2.5rem 2rem 2.25rem !important;
+  html body .formulation-section .ingredient-card-5 {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    padding: 2.25rem 1.85rem 2rem !important;
     margin-top: 0 !important;
-    box-shadow: var(--dz-shadow-md) !important;
-    transition: all 0.4s var(--dz-ease-out) !important;
+    box-shadow: var(--nt-shadow-sm) !important;
+    transition: transform 0.35s var(--nt-ease), box-shadow 0.35s var(--nt-ease), border-color 0.25s ease !important;
     position: relative !important;
     overflow: hidden !important;
   }
 
-  body .formulation-section .ingredient-card-5::before {
+  html body .formulation-section .ingredient-card-5::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, #0A2E1A, #D4AF37, #166534);
+    height: 3px;
+    background: linear-gradient(90deg, #1B5E20 0%, #2E7D32 50%, #81C784 100%);
   }
 
-  body .formulation-section .ingredient-card-5:hover {
-    transform: translateY(-8px) !important;
-    background: #FFFFFF !important;
-    border-color: #D4AF37 !important;
-    box-shadow: var(--dz-shadow-gold) !important;
+  html body .formulation-section .ingredient-card-5:hover {
+    transform: translateY(-6px) !important;
+    border-color: #A5D6A7 !important;
+    box-shadow: var(--nt-shadow-green) !important;
   }
 
   .dz-ing-num {
     position: absolute;
-    top: 18px;
-    right: 22px;
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #B8860B;
-    opacity: 0.85;
+    top: 16px;
+    right: 18px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--nt-primary);
+    background: var(--nt-secondary);
+    border: 1px solid var(--nt-accent);
+    padding: 2px 9px;
+    border-radius: var(--nt-radius-sm);
   }
 
-  body .formulation-section .ingredient-card-5 .ing-icon-5 {
-    width: 78px !important;
-    height: 78px !important;
-    border-radius: 24px !important;
-    background: linear-gradient(135deg, #0A2E1A 0%, #166534 100%) !important;
-    border: 2px solid #D4AF37 !important;
-    box-shadow: 0 12px 26px rgba(10, 46, 26, 0.22) !important;
-    margin: 0 auto 1.4rem auto !important;
+  html body .formulation-section .ingredient-card-5 .ing-icon-5 {
+    width: 72px !important;
+    height: 72px !important;
+    border-radius: var(--nt-radius-lg) !important;
+    background: var(--nt-secondary) !important;
+    border: 1px solid var(--nt-accent) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    margin: 0 auto 1.25rem auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    transition: transform 0.35s var(--nt-ease), background 0.25s ease !important;
   }
 
-  body .formulation-section .ingredient-card-5 .ing-icon-5 svg {
-    width: 40px !important;
-    height: 40px !important;
-    color: #F5E27A !important;
+  html body .formulation-section .ingredient-card-5:hover .ing-icon-5 {
+    transform: scale(1.06) rotate(-4deg) !important;
+    background: var(--nt-accent) !important;
   }
 
-  body .formulation-section .benefits-pills {
+  html body .formulation-section .ingredient-card-5 .ing-icon-5 svg {
+    width: 36px !important;
+    height: 36px !important;
+    color: var(--nt-primary) !important;
+  }
+
+  html body .formulation-section .ingredient-card-5 h4 {
+    color: var(--nt-heading) !important;
+  }
+
+  html body .formulation-section .benefits-pills {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.5rem !important;
-    margin-top: 2.25rem !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.25rem !important;
+    margin-top: 2rem !important;
   }
 
-  body .formulation-section .benefit-pill {
-    background: #FFFFFF !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
-    border-radius: 24px !important;
-    padding: 1.65rem 1.5rem !important;
-    box-shadow: var(--dz-shadow-md) !important;
+  html body .formulation-section .benefit-pill {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    padding: 1.5rem 1.35rem !important;
+    box-shadow: var(--nt-shadow-sm) !important;
     text-align: center !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     gap: 6px !important;
+    transition: transform 0.3s var(--nt-ease), border-color 0.25s ease !important;
+  }
+
+  html body .formulation-section .benefit-pill:hover {
+    transform: translateY(-4px) !important;
+    border-color: #A5D6A7 !important;
   }
 
   .dz-pill-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #0A2E1A, #166534);
-    border: 1.5px solid #D4AF37;
-    color: #F5E27A;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--nt-radius);
+    background: var(--nt-primary);
+    color: #FFFFFF;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    box-shadow: 0 6px 14px -6px rgba(46, 125, 50, 0.55);
   }
 
-  body .formulation-section .ph-balance-banner {
-    background: linear-gradient(135deg, #04160C 0%, #0A2E1A 50%, #14532D 100%) !important;
-    border: 2px solid rgba(212, 175, 55, 0.65) !important;
-    border-radius: 32px !important;
-    padding: 3rem 2.5rem !important;
-    margin-top: 2.75rem !important;
-    box-shadow: 0 28px 65px rgba(4, 22, 12, 0.32) !important;
+  html body .formulation-section .ph-balance-banner {
+    background:
+      radial-gradient(circle at 85% 20%, rgba(129, 199, 132, 0.25) 0%, transparent 48%),
+      linear-gradient(135deg, #1B5E20 0%, #245828 55%, #163C1A 100%) !important;
+    border: 1px solid rgba(200, 230, 201, 0.35) !important;
+    border-radius: var(--nt-radius-xl) !important;
+    padding: 2.75rem 2.25rem !important;
+    margin-top: 2.5rem !important;
+    box-shadow: 0 24px 52px -18px rgba(18, 38, 21, 0.42) !important;
   }
 
-  body .formulation-section .ph-badge {
-    background: linear-gradient(135deg, #D4AF37 0%, #F5E27A 50%, #B8860B 100%) !important;
+  html body .formulation-section .ph-badge {
+    background: var(--nt-secondary) !important;
     border: 2px solid #FFFFFF !important;
-    color: #04160C !important;
-    font-size: 1.35rem !important;
+    color: var(--nt-primary-dark) !important;
+    border-radius: var(--nt-radius) !important;
+    font-size: 1.25rem !important;
     font-weight: 800 !important;
-    padding: 0.65rem 2.2rem !important;
+    padding: 0.55rem 1.85rem !important;
   }
 
   .dz-ph-spectrum {
-    max-width: 600px;
-    margin: 1.6rem auto 0;
-    padding: 1.15rem 1.4rem;
+    max-width: 580px;
+    margin: 1.5rem auto 0;
+    padding: 1.15rem 1.35rem;
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.35);
-    border-radius: 20px;
+    border: 1px solid rgba(200, 230, 201, 0.28);
+    border-radius: var(--nt-radius-lg);
+    text-align: center;
+  }
+
+  .dz-ph-safe-zone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(232, 245, 233, 0.16);
+    border: 1px solid rgba(200, 230, 201, 0.38);
+    color: #E8F5E9;
+    padding: 4px 12px;
+    border-radius: var(--nt-radius-sm);
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
 
   .dz-ph-bar {
-    height: 12px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #F87171 0%, #FBBF24 28%, #34D399 55%, #10B981 70%, #60A5FA 100%);
+    height: 10px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #EF5350 0%, #FFCA28 28%, #66BB6A 55%, #2E7D32 72%, #42A5F5 100%);
     position: relative;
-    margin: 12px 0 8px;
+    margin: 10px 0;
   }
 
   .dz-ph-marker {
@@ -7299,327 +7830,497 @@ try {
     left: 62%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background: #FFFFFF;
-    border: 4px solid #D4AF37;
-    box-shadow: 0 0 16px rgba(212, 175, 55, 0.95);
+    border: 4px solid var(--nt-primary);
+    box-shadow: 0 0 0 5px rgba(200, 230, 201, 0.38);
   }
 
   .dz-ph-labels {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.94);
     font-weight: 700;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   /* ============================================================================
-     6. COMPARISON TABLE (#compare) — SPACIOUS CLINICAL MATRIX
+     8. COMPARISON TABLE (#compare) — CLEAN SHADCN CLINICAL MATRIX
      ============================================================================ */
-  body .comparison-section {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F2F8F4 100%) !important;
-    padding: 6.5rem 0 !important;
+  html body .comparison-section {
+    background: var(--nt-bg) !important;
+    padding: 6rem 0 !important;
   }
 
-  body .comparison-section .compare-grid {
-    background: #FFFFFF !important;
-    border: 2px solid rgba(212, 175, 55, 0.45) !important;
-    border-radius: 30px !important;
-    box-shadow: var(--dz-shadow-lg) !important;
+  html body .comparison-section .compare-grid {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    box-shadow: var(--nt-shadow-md) !important;
     max-width: 1040px !important;
     margin: 0 auto !important;
     overflow: hidden !important;
   }
 
-  body .comparison-section .compare-row {
-    background: #FFFFFF !important;
-    border-bottom: 1px solid rgba(20, 83, 45, 0.1) !important;
+  html body .comparison-section .compare-row {
+    background: var(--nt-card-pure) !important;
+    border-bottom: 1px solid #EDE6DC !important;
     grid-template-columns: 1.75fr 1.15fr 1fr !important;
+    transition: background-color 0.2s ease !important;
   }
 
-  body .comparison-section .compare-row:first-child {
-    background: linear-gradient(90deg, #F4F9F6 0%, #ECFDF5 50%, #F8FAFC 100%) !important;
-    border-bottom: 2px solid #D4AF37 !important;
+  html body .comparison-section .compare-row:last-child {
+    border-bottom: none !important;
   }
 
-  body .comparison-section .compare-row:not(:first-child) > div:nth-child(2) {
-    background: linear-gradient(180deg, rgba(209, 250, 229, 0.45) 0%, rgba(251, 245, 230, 0.3) 100%) !important;
-    border-left: 2px solid rgba(212, 175, 55, 0.35) !important;
-    border-right: 2px solid rgba(212, 175, 55, 0.35) !important;
+  html body .comparison-section .compare-row:first-child {
+    background: var(--nt-secondary) !important;
+    border-bottom: 2px solid var(--nt-primary) !important;
   }
 
-  body .comparison-section .compare-cell {
-    padding: 1.45rem 1.5rem !important;
+  html body .comparison-section .compare-row:not(:first-child):hover {
+    background: var(--nt-bg-soft) !important;
+  }
+
+  html body .comparison-section .compare-row:not(:first-child) > div:nth-child(2) {
+    background: rgba(232, 245, 233, 0.55) !important;
+    border-left: 1px solid var(--nt-accent) !important;
+    border-right: 1px solid var(--nt-accent) !important;
+  }
+
+  html body .comparison-section .compare-cell {
+    padding: 1.35rem 1.4rem !important;
+    color: var(--nt-fg) !important;
   }
 
   /* ============================================================================
-     7. REVIEWS SECTION (#reviews) — WIDE PORTRAIT CARDS, ZERO TEXT CROWDING
+     9. REVIEWS SECTION (#reviews) — SYMMETRICAL PORTRAIT CARDS, ZERO CLIPPING
      ============================================================================ */
-  body .reviews-section {
-    background: linear-gradient(180deg, #E8F4ED 0%, #F7FAF8 100%) !important;
-    padding: 6.5rem 0 !important;
+  html body .reviews-section {
+    background: linear-gradient(180deg, var(--nt-bg-soft) 0%, #EEF6EE 100%) !important;
+    padding: 6rem 0 !important;
   }
 
-  body .reviews-section .reviews-grid {
+  html body .reviews-section .reviews-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 1.5rem !important;
-    margin-top: 2.75rem !important;
+    margin-top: 2.5rem !important;
   }
 
-  body .reviews-section .review-card {
-    height: 410px !important;
-    border-radius: 26px !important;
-    border: 2px solid rgba(212, 175, 55, 0.45) !important;
-    box-shadow: var(--dz-shadow-md) !important;
+  html body .reviews-section .review-card {
+    height: 400px !important;
+    border-radius: var(--nt-radius-lg) !important;
+    border: 1px solid var(--nt-border) !important;
+    box-shadow: var(--nt-shadow-md) !important;
     overflow: hidden !important;
     position: relative !important;
+    transition: transform 0.35s var(--nt-ease), box-shadow 0.35s var(--nt-ease) !important;
   }
 
-  body .reviews-section .review-card::after {
+  html body .reviews-section .review-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: var(--nt-shadow-green) !important;
+  }
+
+  html body .reviews-section .review-card::after {
     display: inline-flex !important;
+    align-items: center !important;
     content: "★★★★★  Verified" !important;
-    background: rgba(5, 27, 15, 0.88) !important;
-    backdrop-filter: blur(10px) !important;
-    color: #F5E27A !important;
-    border: 1px solid rgba(212, 175, 55, 0.65) !important;
-    padding: 5px 14px !important;
-    border-radius: 999px !important;
-    font-size: 0.72rem !important;
+    background: rgba(255, 254, 251, 0.94) !important;
+    backdrop-filter: blur(8px) !important;
+    color: var(--nt-primary-dark) !important;
+    border: 1px solid var(--nt-accent) !important;
+    padding: 4px 11px !important;
+    border-radius: var(--nt-radius-sm) !important;
+    font-size: 0.7rem !important;
     font-weight: 700 !important;
-    top: 14px !important;
-    left: 14px !important;
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
     z-index: 4 !important;
   }
 
-  body .reviews-section .review-caption {
-    background: linear-gradient(180deg, rgba(5, 27, 15, 0.8) 0%, rgba(5, 27, 15, 0.95) 100%) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border: 1px solid rgba(212, 175, 55, 0.42) !important;
-    border-radius: 18px !important;
-    margin: 10px !important;
-    padding: 1rem 0.9rem !important;
-    font-size: 0.9rem !important;
-    line-height: 1.55 !important;
+  /* Symmetrical inset caption (fixes width:100% + margin right-overflow bug!) */
+  html body .reviews-section .review-caption {
+    position: absolute !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    width: auto !important;
+    max-width: calc(100% - 24px) !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    background: rgba(18, 38, 21, 0.86) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(200, 230, 201, 0.25) !important;
+    border-radius: var(--nt-radius) !important;
+    padding: 0.9rem 0.95rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
     color: #FFFFFF !important;
+    text-align: center !important;
     word-break: normal !important;
     overflow-wrap: break-word !important;
   }
 
-  body .reviews-section .review-caption::before {
+  html body .reviews-section .review-caption::before {
     content: none !important;
     display: none !important;
   }
 
   /* ============================================================================
-     8. SHOP / PROJECT SUPPORT SECTION (#product) — BALANCED & UN-CROWDED
+     10. SHOP / PROJECT SUPPORT (#product) — NATURE SHADCN PACKAGE SELECTOR
      ============================================================================ */
-  body section#product.shop-section {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F2F8F4 100%) !important;
-    padding: 6.5rem 0 !important;
+  html body section#product.shop-section {
+    background: var(--nt-bg) !important;
+    padding: 6rem 0 !important;
   }
 
-  body section#product .shop-container {
+  html body section#product .shop-container {
     max-width: 1340px !important;
     margin: 0 auto !important;
     padding: 0 2rem !important;
     display: grid !important;
-    grid-template-columns: 0.92fr 1.08fr !important;
-    gap: 3.5rem !important;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+    gap: 3.25rem !important;
     align-items: stretch !important;
+    box-sizing: border-box !important;
   }
 
-  body section#product .product-gallery {
-    background: linear-gradient(155deg, #072213 0%, #0F4226 52%, #051B0F 100%) !important;
-    border: 2px solid rgba(212, 175, 55, 0.55) !important;
-    border-radius: 34px !important;
-    padding: 2rem 1.75rem !important;
-    gap: 1.35rem !important;
-    box-shadow: 0 30px 70px rgba(5, 27, 15, 0.24) !important;
+  html body section#product .shop-image-side,
+  html body section#product .shop-details-side {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#product .product-gallery {
+    background:
+      radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.85) 0%, transparent 52%),
+      linear-gradient(160deg, #EEF7EE 0%, #D4ECD6 60%, #C8E6C9 100%) !important;
+    border: 1px solid #B7DFB9 !important;
+    border-radius: var(--nt-radius-xl) !important;
+    padding: 1.75rem 1.5rem !important;
+    gap: 1.15rem !important;
+    box-shadow: var(--nt-shadow-md) !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
   }
 
-  body section#product .product-hover-container {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(236, 253, 245, 0.92) 100%) !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
-    border-radius: 24px !important;
-    padding: 1.25rem !important;
+  html body section#product .product-hover-container {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    padding: 1.15rem !important;
     margin-bottom: 0 !important;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18) !important;
-    transition: all 0.35s var(--dz-ease-out) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: all 0.3s var(--nt-ease) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     position: relative !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  body section#product .product-hover-container:hover,
-  body section#product .product-hover-container.active {
+  html body section#product .product-hover-container:hover,
+  html body section#product .product-hover-container.active {
     background: #FFFFFF !important;
-    border: 2px solid #D4AF37 !important;
-    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28), 0 0 25px rgba(212, 175, 55, 0.45) !important;
-    transform: translateY(-4px) !important;
+    border-color: var(--nt-primary) !important;
+    box-shadow: 0 0 0 3px var(--nt-ring), var(--nt-shadow-md) !important;
+    transform: translateY(-3px) !important;
   }
 
-  body section#product .product-hover-container img {
-    max-width: 210px !important;
-    max-height: 190px !important;
+  html body section#product .product-hover-container img {
+    max-width: 195px !important;
+    max-height: 180px !important;
     width: auto !important;
     height: auto !important;
     object-fit: contain !important;
   }
 
-  body section#product .product-hover-container span {
-    font-size: 1.1rem !important;
-    font-weight: 800 !important;
-    color: #F5E27A !important;
-    margin-top: 0.75rem !important;
-    background: linear-gradient(135deg, #0A2E1A 0%, #166534 100%) !important;
-    border: 1px solid #D4AF37 !important;
-    padding: 5px 22px !important;
-    border-radius: 999px !important;
+  html body section#product .product-hover-container span {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin-top: 0.7rem !important;
+    background: var(--nt-primary) !important;
+    border: none !important;
+    padding: 5px 18px !important;
+    border-radius: var(--nt-radius) !important;
+    text-align: center !important;
   }
 
-  body section#product .product-separator {
+  html body section#product .product-separator {
     display: none !important;
   }
 
-  body section#product .hero-warning-box > div {
-    background: linear-gradient(135deg, #FFFDF7 0%, #FEF6DF 100%) !important;
-    border: 1.5px solid #D4AF37 !important;
-    border-left: 5px solid #B8860B !important;
-    border-radius: 18px !important;
-    padding: 16px 22px !important;
-    margin: 18px 0 24px !important;
+  /* Project Support Notice — Nature Muted Linen + Forest Accent (zero gold) */
+  html body section#product .hero-warning-box > div {
+    background: var(--nt-muted) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-left: 4px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius) !important;
+    padding: 14px 20px !important;
+    margin: 16px 0 22px !important;
+    box-sizing: border-box !important;
   }
 
-  body section#product .hero-warning-box > div p {
-    color: #78350F !important;
-    font-size: 0.96rem !important;
-    font-weight: 700 !important;
+  html body section#product .hero-warning-box > div p {
+    color: var(--nt-fg) !important;
+    font-size: 0.93rem !important;
+    font-weight: 600 !important;
     line-height: 1.6 !important;
+    margin: 0 !important;
   }
 
-  body .pro-donate-wrapper {
-    background: linear-gradient(180deg, #EAF5EE 0%, #F4F9F6 100%) !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.38) !important;
-    border-radius: 28px !important;
-    padding: 1.75rem !important;
-    gap: 14px !important;
+  /* Package Selection Cards */
+  html body .pro-donate-wrapper {
+    background: var(--nt-bg-soft) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    padding: 1.5rem !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
   }
 
-  body .pro-donate-wrapper .pro-option-card {
-    background: #FFFFFF !important;
-    border: 1.5px solid rgba(20, 83, 45, 0.16) !important;
-    border-radius: 20px !important;
-    padding: 1.25rem 1.4rem !important;
-    margin-bottom: 12px !important;
+  html body .pro-donate-wrapper .pro-group-title {
+    color: var(--nt-muted-fg) !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.6px !important;
+  }
+
+  html body .pro-donate-wrapper .pro-option-card {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-md) !important;
+    padding: 1.2rem 1.3rem !important;
+    margin-bottom: 8px !important;
     display: flex !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
     flex-wrap: nowrap !important;
-    gap: 14px !important;
+    gap: 12px !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: all 0.25s var(--nt-ease) !important;
+    box-sizing: border-box !important;
   }
 
-  body .pro-donate-wrapper .pro-card-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    margin-bottom: 8px !important;
+  html body .pro-donate-wrapper .pro-option-card:hover {
+    border-color: #9CCC9E !important;
+    background: #FCFDFC !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--nt-shadow-sm) !important;
   }
 
-  body section#product .shop-trust-icons {
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected,
+  html body .pro-donate-wrapper .pro-option-card.selected,
+  html body .pro-option-card.selected,
+  html body .pro-option-card[data-selected] {
+    background: #F4FAF4 !important;
+    border: 2px solid var(--nt-primary) !important;
+    box-shadow: 0 0 0 3px var(--nt-ring), var(--nt-shadow-md) !important;
+    transform: translateY(-2px) !important;
+    animation: none !important;
+  }
+
+  html body .pro-donate-wrapper .pro-option-card .pro-title,
+  html body .pro-option-card .pro-title,
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-title {
+    color: var(--nt-heading) !important;
+    -webkit-text-fill-color: var(--nt-heading) !important;
+    background: none !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0 !important;
+    font-size: 1.08rem !important;
+  }
+
+  /* Override ALL legacy gold #B8860B / #D4AF37 prices to Nature Primary #2E7D32! */
+  html body .pro-donate-wrapper .pro-option-card .pro-price,
+  html body .pro-option-card .pro-price,
+  html body .pro-option-card [class*="price"],
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-price {
+    color: var(--nt-primary) !important;
+    font-size: 1.22rem !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+  }
+
+  html body .gold-sponsor-badge,
+  html body .pro-badge-popular {
+    background: var(--nt-primary) !important;
+    color: #FFFFFF !important;
+    border-radius: var(--nt-radius-sm) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    border: none !important;
+  }
+
+  html body .pro-option-card .pro-radio-custom {
+    border: 2px solid var(--nt-border-strong) !important;
+    background: #FFFFFF !important;
+    margin-right: 4px !important;
+  }
+
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-radio-custom,
+  html body .pro-option-card.selected .pro-radio-custom {
+    border: 6px solid var(--nt-primary) !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 3px var(--nt-ring) !important;
+    animation: none !important;
+  }
+
+  html body .pro-benefits li {
+    color: var(--nt-muted-fg) !important;
+  }
+  html body .pro-benefits li svg {
+    color: var(--nt-primary) !important;
+  }
+
+  html body section#product .shop-trust-icons {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 12px 24px !important;
-    padding-top: 1.5rem !important;
-    margin-top: 1.5rem !important;
-    border-top: 1px solid rgba(20, 83, 45, 0.12) !important;
+    gap: 10px 14px !important;
+    padding-top: 1.35rem !important;
+    margin-top: 1.35rem !important;
+    border-top: 1px dashed var(--nt-border) !important;
   }
 
-  body section#product .shop-trust-icons .trust-item {
-    background: #F2F9F5 !important;
-    border: 1px solid rgba(20, 83, 45, 0.15) !important;
-    padding: 7px 15px !important;
-    border-radius: 999px !important;
-    color: #0A2E1A !important;
-    font-size: 0.85rem !important;
+  html body section#product .shop-trust-icons .trust-item {
+    background: var(--nt-secondary) !important;
+    border: 1px solid var(--nt-accent) !important;
+    padding: 6px 14px !important;
+    border-radius: var(--nt-radius) !important;
+    color: var(--nt-secondary-fg) !important;
+    font-size: 0.84rem !important;
     font-weight: 600 !important;
   }
 
   /* ============================================================================
-     9. STORY, TESTIMONIALS, CONSULT FORM & SOCIAL DOCK — SPACIOUS LAYOUT
+     11. STORY, CONSULTATION FORM, SOCIAL CHANNELS & FOOTER
      ============================================================================ */
-  body section#story.story-consult-section {
-    background: linear-gradient(180deg, #E8F4ED 0%, #FFFFFF 100%) !important;
-    padding: 6.5rem 0 !important;
+  html body section#story.story-consult-section {
+    background: linear-gradient(180deg, #EEF6EE 0%, var(--nt-bg) 100%) !important;
+    padding: 6rem 0 !important;
   }
 
-  body section#story .story-grid {
+  html body section#story .story-grid {
     max-width: 1340px !important;
-    gap: 3.5rem !important;
+    gap: 3.25rem !important;
     align-items: start !important;
   }
 
-  /* Stack the 2 clinical testimonial cards into 1 full-width column so quotes never crowd */
-  body section#story .testimonial-cards,
-  body section#story .testimonials-mini {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-    margin-top: 2rem !important;
+  html body .brand-story-side .kicker {
+    display: flex !important;
+    width: fit-content !important;
   }
 
-  body section#story .testi-card {
-    background: #FFFFFF !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.4) !important;
-    border-left: 5px solid #166534 !important;
-    border-radius: 22px !important;
-    padding: 1.4rem 1.65rem !important;
-    margin-bottom: 0 !important;
-    margin-top: 0 !important;
-    box-shadow: var(--dz-shadow-sm) !important;
+  html body .brand-story-side h2.h2-large {
+    color: var(--nt-heading) !important;
+    display: block !important;
+  }
+  html body .brand-story-side h2.h2-large::after {
+    background: var(--nt-primary) !important;
+    border-radius: 999px !important;
+  }
+
+  html body section#story .testimonial-cards,
+  html body section#story .testimonials-mini {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.1rem !important;
+    margin-top: 1.75rem !important;
+  }
+
+  html body section#story .testi-card {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-left: 4px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    padding: 1.35rem 1.5rem !important;
+    margin: 0 !important;
+    box-shadow: var(--nt-shadow-sm) !important;
     display: flex !important;
     align-items: flex-start !important;
-    gap: 1.15rem !important;
+    gap: 1rem !important;
+    transition: transform 0.25s var(--nt-ease), box-shadow 0.25s ease !important;
   }
 
-  body .consult-form-side .form-card {
+  html body section#story .testi-card:hover {
+    transform: translateX(4px) !important;
+    box-shadow: var(--nt-shadow-md) !important;
+  }
+
+  html body .consult-form-side .form-card {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-top: 3px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius-lg) !important;
+    padding: 2.5rem 2.25rem !important;
+    box-shadow: var(--nt-shadow-lg) !important;
+  }
+
+  /* Shadcn Nature Input Controls (matches screenshot Email m@example.com box) */
+  html body .input-group input,
+  html body .input-group textarea,
+  html body .consult-form-side .input-group input,
+  html body .consult-form-side .input-group textarea,
+  html body .nc-form-group input,
+  html body .nc-form-group textarea,
+  html body .nc-form-group select,
+  html body #new-checkout-modal input,
+  html body #new-checkout-modal textarea {
+    background: #FAF7F2 !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius) !important;
+    color: var(--nt-fg) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+  }
+
+  html body .input-group input:focus,
+  html body .input-group textarea:focus,
+  html body .consult-form-side .input-group input:focus,
+  html body .consult-form-side .input-group textarea:focus,
+  html body .nc-form-group input:focus,
+  html body .nc-form-group textarea:focus,
+  html body .nc-form-group select:focus,
+  html body #new-checkout-modal input:focus,
+  html body #new-checkout-modal textarea:focus {
     background: #FFFFFF !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
-    border-top: 5px solid #0A2E1A !important;
-    border-radius: 30px !important;
-    padding: 3rem 2.5rem !important;
-    box-shadow: var(--dz-shadow-lg) !important;
+    border-color: var(--nt-primary) !important;
+    box-shadow: 0 0 0 3px var(--nt-ring) !important;
+    transform: none !important;
+    outline: none !important;
   }
 
-  /* Social Channels Section — Clean, Un-Crowded Pill Rows */
-  body section.social-section {
-    background: linear-gradient(180deg, #FFFFFF 0%, #E8F4ED 100%) !important;
-    padding: 4rem 0 5rem !important;
+  /* Social Channels Section */
+  html body section.social-section {
+    background: var(--nt-bg) !important;
+    padding: 3.5rem 0 4.5rem !important;
   }
 
-  body section.social-section > .container {
-    background: linear-gradient(135deg, #FFFFFF 0%, #F4FAF6 100%) !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.4) !important;
-    border-radius: 32px !important;
-    padding: 2.75rem 2.5rem !important;
-    box-shadow: var(--dz-shadow-md) !important;
-    max-width: 1220px !important;
+  html body section.social-section > .container {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-xl) !important;
+    padding: 2.5rem 2.25rem !important;
+    box-shadow: var(--nt-shadow-md) !important;
+    max-width: 1200px !important;
   }
 
-  /* Reset inner div.social-section inside .social-buttons so it doesn't double-pad */
-  body .social-buttons > .social-section {
+  html body .social-buttons > .social-section {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
@@ -7628,412 +8329,640 @@ try {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 1.1rem !important;
+    gap: 1rem !important;
   }
 
-  body .social-row {
+  html body .social-row {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 14px !important;
+    gap: 12px !important;
     width: 100% !important;
   }
 
-  body .social-row .social-btn {
+  html body .social-row .social-btn {
     width: auto !important;
-    min-width: 215px !important;
+    min-width: 210px !important;
     flex: 0 1 auto !important;
     justify-content: flex-start !important;
+    background: var(--nt-bg-soft) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius) !important;
+    padding: 0.8rem 1.25rem !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: all 0.22s var(--nt-ease) !important;
+  }
+
+  html body .social-row .social-btn:hover {
     background: #FFFFFF !important;
-    border: 1.5px solid rgba(20, 83, 45, 0.18) !important;
-    border-radius: 999px !important;
-    padding: 0.85rem 1.5rem !important;
-    box-shadow: 0 6px 16px rgba(10, 46, 26, 0.06) !important;
+    border-color: #A5D6A7 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--nt-shadow-sm) !important;
   }
 
-  /* Footer Alignment */
-  body footer.footer {
-    background: linear-gradient(135deg, #04160C 0%, #0A2E1A 50%, #14532D 100%) !important;
-    border-top: 2px solid #D4AF37 !important;
-    padding: 4.5rem 0 2.5rem !important;
+  /* Deep Botanical Forest Footer (preserves pure-white original DENT-Z logo) */
+  html body footer.footer {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(76, 175, 80, 0.16) 0%, transparent 45%),
+      linear-gradient(160deg, #17281A 0%, #111E14 60%, #0C160E 100%) !important;
+    border-top: 2px solid var(--nt-primary) !important;
+    padding: 4.25rem 0 2.5rem !important;
   }
 
-  body footer.footer .footer-logo,
-  body footer.footer .dentz-logo-footer {
+  html body footer.footer .footer-logo,
+  html body footer.footer .dentz-logo-footer {
     transform: none !important;
     top: 0 !important;
     margin-bottom: 1rem !important;
   }
 
-  body footer.footer .footer-logo > div {
-    top: 0 !important;
+  html body footer.footer .footer-links a {
+    color: #E8F5E9 !important;
+    opacity: 0.88;
+  }
+  html body footer.footer .footer-links a:hover {
+    color: #A5D6A7 !important;
+    opacity: 1;
   }
 
   /* ============================================================================
-     10. MOBILE & TABLET COMPREHENSIVE LAYOUT (<= 992px & <= 640px)
-     DESIGNED FOR MAXIMUM READABILITY & ZERO CROWDING ON PHONES
+     12. ALL MODALS (QUIZ, AUTH, PROFILE, ARTICLE, CHECKOUT, T&C, PAYMENT, FAQ)
+     ============================================================================ */
+  html body .modal-overlay,
+  html body .article-modal-overlay,
+  html body .donate-modal-overlay {
+    background-color: rgba(18, 30, 20, 0.55) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
+
+  html body .modal-content,
+  html body .article-modal-content,
+  html body .donate-modal-content,
+  html body .css-modal-content,
+  html body .new-checkout-content,
+  html body #footer-terms-modal > div,
+  html body #payment-modal > div {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius-xl) !important;
+    box-shadow: 0 32px 70px -20px rgba(18, 38, 21, 0.45) !important;
+  }
+
+  /* Harmonize stray sky-blue heading inside #footer-terms-modal & CSS modals to Nature green */
+  html body #footer-terms-modal h2,
+  html body #privacy-modal h2,
+  html body #faq-modal h2 {
+    color: var(--nt-primary-dark) !important;
+  }
+
+  /* Harmonize #payment-modal header banner, #tc-modal notice box, & #new-checkout-modal quick amount buttons to Nature */
+  html body #payment-modal > div > div:first-child {
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%) !important;
+    color: #FFFFFF !important;
+  }
+
+  html body #payment-modal > div > div:first-child h2,
+  html body #payment-modal > div > div:first-child p {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+  }
+
+  html body #tc-modal .donate-modal-header > div {
+    color: var(--nt-primary-dark) !important;
+  }
+
+  html body #tc-modal .donate-modal-content > div[style*="fffbeb"] {
+    background: var(--nt-bg-soft) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-left: 4px solid var(--nt-primary) !important;
+    border-radius: var(--nt-radius-md) !important;
+    color: var(--nt-fg) !important;
+  }
+
+  html body #tc-modal .donate-modal-content > div[style*="fffbeb"] p[style*="b45309"] {
+    color: var(--nt-primary-dark) !important;
+  }
+
+  html body #tc-back-btn {
+    background: var(--nt-muted) !important;
+    color: var(--nt-fg) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius) !important;
+  }
+
+  html body .quick-amt-btn,
+  html body .nc-amt-btn {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    color: var(--nt-heading) !important;
+    border-radius: var(--nt-radius) !important;
+    font-weight: 700 !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: all 0.2s var(--nt-ease) !important;
+  }
+
+  html body .quick-amt-btn:hover,
+  html body .nc-amt-btn:hover,
+  html body .quick-amt-btn.active,
+  html body .nc-amt-btn.active {
+    background: var(--nt-secondary) !important;
+    border-color: var(--nt-primary) !important;
+    color: var(--nt-primary-dark) !important;
+    box-shadow: 0 0 0 2px var(--nt-ring) !important;
+  }
+
+  html body #donate-amount-input {
+    border: 1.5px solid var(--nt-primary) !important;
+    color: var(--nt-primary-dark) !important;
+    background: var(--nt-bg-soft) !important;
+    border-radius: var(--nt-radius) !important;
+  }
+
+  html body .quiz-progress {
+    background: var(--nt-muted) !important;
+    border-radius: 9999px !important;
+    overflow: hidden !important;
+  }
+
+  html body .quiz-bar {
+    background: var(--nt-primary) !important;
+    border-radius: 9999px !important;
+  }
+
+  html body .quiz-option {
+    background: var(--nt-card-pure) !important;
+    border: 1px solid var(--nt-border) !important;
+    border-radius: var(--nt-radius) !important;
+    color: var(--nt-fg) !important;
+    box-shadow: var(--nt-shadow-xs) !important;
+    transition: all 0.2s var(--nt-ease) !important;
+  }
+
+  html body .quiz-option:hover {
+    background: var(--nt-secondary) !important;
+    border-color: var(--nt-primary) !important;
+    color: var(--nt-primary-dark) !important;
+    box-shadow: 0 0 0 3px var(--nt-ring) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* ============================================================================
+     13. TABLET & MOBILE RESPONSIVE MASTER LAYOUT (ZERO CLIPPING, ZERO CROWDING)
      ============================================================================ */
   @media (max-width: 992px) {
     section > .container {
-      padding-left: 1.15rem !important;
-      padding-right: 1.15rem !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
     }
 
-    /* Keep hamburger hidden on mobile because all tabs and buttons are shown directly in the header */
     .mobile-menu-btn {
       display: none !important;
       width: 0 !important;
       height: 0 !important;
     }
 
-    /* Mobile Header: 3 Clean, Well-Spaced Tiers */
-    .header .nav-container {
-      padding: 8px 12px 10px !important;
+    /* Compact, Well-Proportioned 3-Tier Mobile Header */
+    html body header.header .nav-container {
+      padding: 6px 12px 8px !important;
       flex-wrap: wrap !important;
       justify-content: center !important;
-      gap: 6px !important;
+      gap: 5px !important;
+      min-height: 0 !important;
     }
 
-    /* Tier 1: Centered Brand Logo (Original Pattern Preserved) */
+    /* Tier 1: Centered Original Brand Logo */
     .header .logo {
       order: 1 !important;
       width: 100% !important;
       display: flex !important;
       justify-content: center !important;
-      margin-bottom: 2px !important;
+      margin-bottom: 0 !important;
     }
 
     .dentz-logo-header .dentz-logo-text {
-      font-size: 1.85rem !important;
+      font-size: 1.65rem !important;
     }
 
     .dentz-logo-product .dentz-logo-text {
-      font-size: 2.35rem !important;
+      font-size: 2.25rem !important;
     }
 
-    /* Tier 2: Swipeable Section Navigation Pills */
-    .nav-links.desktop-only {
+    /* Tier 2: All 4 Section Tabs Fit Cleanly Across the Phone Width */
+    html body .nav-links.desktop-only {
       display: flex !important;
       order: 2 !important;
       width: 100% !important;
-      justify-content: flex-start !important;
+      justify-content: center !important;
       overflow-x: auto !important;
-      padding: 4px 2px 6px !important;
+      padding: 3px 0 5px !important;
       background: transparent !important;
       border: none !important;
-      border-bottom: 1px solid rgba(20, 83, 45, 0.08) !important;
+      border-bottom: 1px solid rgba(223, 214, 202, 0.75) !important;
       border-radius: 0 !important;
-      gap: 8px !important;
+      gap: 6px !important;
+      scrollbar-width: none !important;
+    }
+    html body .nav-links.desktop-only::-webkit-scrollbar {
+      display: none !important;
     }
 
-    .nav-links.desktop-only a {
-      background: #F2F9F5 !important;
-      border: 1px solid rgba(20, 83, 45, 0.14) !important;
-      font-size: 0.8rem !important;
-      padding: 6px 14px !important;
+    html body .nav-links.desktop-only a {
+      background: var(--nt-card-pure) !important;
+      border: 1px solid var(--nt-border) !important;
+      border-radius: var(--nt-radius) !important;
+      font-size: 0.76rem !important;
+      padding: 5px 10px !important;
       flex-shrink: 0 !important;
     }
 
-    /* Tier 3: Action Buttons Grid (NEVER squished horizontally) */
-    .header-actions.desktop-only {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)) !important;
-      order: 3 !important;
-      width: 100% !important;
-      gap: 8px !important;
-      padding: 4px 0 0 !important;
-      overflow: visible !important;
+    html body .nav-links.desktop-only a.dz-nav-active {
+      background: var(--nt-primary) !important;
+      border-color: var(--nt-primary) !important;
+      color: #FFFFFF !important;
     }
 
-    .header-actions.desktop-only button {
+    /* Tier 3: Symmetrical Action Buttons Grid (Targets BOTH <button> and <a>!) */
+    html body .header-actions.desktop-only {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      order: 3 !important;
       width: 100% !important;
-      height: 38px !important;
-      padding: 0 10px !important;
-      font-size: 0.78rem !important;
-      border-radius: 12px !important;
+      gap: 6px !important;
+      padding: 2px 0 0 !important;
+    }
+
+    html body .header-actions.desktop-only > :is(button, a) {
+      width: 100% !important;
+      height: 36px !important;
+      padding: 0 8px !important;
+      font-size: 0.76rem !important;
+      border-radius: var(--nt-radius) !important;
       justify-content: center !important;
       margin: 0 !important;
     }
 
-    /* Hero Mobile: Generous Vertical Spacing & Full-Width Cards */
-    body section#hero.hero {
-      padding: 1.75rem 0 3.5rem !important;
+    html body .header-actions.desktop-only .btn-cta-small {
+      border-radius: var(--nt-radius) !important;
+      padding: 0 8px !important;
     }
 
-    body section#hero .hero-container {
+    html body .header-actions.desktop-only .btn-cta-small .nt-cta-circle {
+      width: 22px;
+      height: 22px;
+      margin-left: 5px;
+    }
+
+    /* Hero Mobile — Generous Top Clearance & Zero Overflow */
+    html body section#hero.hero {
+      padding: 1.35rem 0 3.25rem !important;
+    }
+
+    html body section#hero .hero-container {
       display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 2.25rem !important;
-      padding: 0 1.15rem !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 2rem !important;
+      padding: 0 1rem !important;
     }
 
-    body section#hero .hero-container .hero-content {
-      padding: 2rem 1.35rem !important;
+    html body section#hero .hero-container .hero-content {
+      padding: 1.75rem 1.25rem !important;
       text-align: center !important;
-      border-radius: 26px !important;
+      border-radius: var(--nt-radius-lg) !important;
     }
 
-    body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 8px !important;
+    html body section#hero .hero-container .hero-content .hero-trust {
+      grid-template-columns: minmax(0, 1fr) !important;
     }
 
-    body section#hero .hero-container .hero-content .hero-trust {
-      grid-template-columns: 1fr !important;
-      gap: 10px !important;
-    }
-
-    body section#hero .hero-container .hero-content .trust-stat {
-      flex-direction: row !important;
+    html body section#hero .hero-container .hero-content .trust-stat {
       text-align: left !important;
-      padding: 0.9rem 1.1rem !important;
-      gap: 12px !important;
+      padding: 0.8rem 1rem !important;
     }
+
+    .nt-leaf { display: none !important; }
 
     /* Knowledge Hub Mobile */
-    section#knowledge .section-header {
+    html body section#knowledge .section-header {
       flex-direction: column !important;
       align-items: flex-start !important;
       gap: 1rem !important;
     }
 
-    section#knowledge .article-card {
-      flex: 0 0 84vw !important;
-      max-width: 340px !important;
+    html body section#knowledge .article-card {
+      flex: 0 0 82vw !important;
+      max-width: 330px !important;
     }
 
-    /* Formulation Mobile: 1 Spacious Card Per Row */
-    body .formulation-section .ingredients-grid-5,
-    body .formulation-section .ingredients-grid-5 > .grid-row-3,
-    body .formulation-section .benefits-pills {
-      grid-template-columns: 1fr !important;
-      gap: 1.25rem !important;
+    /* Formulation Mobile */
+    html body .formulation-section .ingredients-grid-5,
+    html body .formulation-section .ingredients-grid-5 > .grid-row-3,
+    html body .formulation-section .benefits-pills {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 1.15rem !important;
     }
 
-    body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(1),
-    body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(2) {
+    html body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(1),
+    html body .formulation-section .ingredients-grid-5 > .ingredient-card-5:nth-child(2) {
       grid-column: span 1 !important;
     }
 
-    body .formulation-section .ingredient-card-5 {
-      padding: 2rem 1.5rem !important;
+    html body .formulation-section .ingredient-card-5 {
+      padding: 1.85rem 1.35rem !important;
     }
 
-    body .formulation-section .ph-balance-banner {
-      padding: 2.25rem 1.35rem !important;
+    html body .formulation-section .ph-balance-banner {
+      padding: 2rem 1.25rem !important;
     }
 
-    /* Reviews Tablet 2x2 Grid */
-    body .reviews-section .reviews-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 1.25rem !important;
+    /* Reviews Tablet 2x2 */
+    html body .reviews-section .reviews-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 1.15rem !important;
     }
 
-    body .reviews-section .review-card {
+    html body .reviews-section .review-card {
       height: 360px !important;
     }
 
-    /* Shop Mobile: 3-Column Horizontal Tube Showcase + Full-Width Package Cards */
-    body section#product .shop-container {
+    /* Shop Mobile — Strictly Contained Within 100% Viewport (Fixes 787px bug!) */
+    html body section#product .shop-container {
       display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 2.25rem !important;
-      padding: 0 1.15rem !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 2rem !important;
+      padding: 0 1rem !important;
     }
 
-    body section#product .product-gallery {
+    html body section#product .product-gallery {
       display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      padding: 1.1rem !important;
-      gap: 10px !important;
-      border-radius: 26px !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      padding: 0.85rem !important;
+      gap: 8px !important;
+      border-radius: var(--nt-radius-lg) !important;
+      width: 100% !important;
     }
 
-    body section#product .product-hover-container {
-      padding: 0.85rem 0.45rem !important;
-      border-radius: 18px !important;
+    html body section#product .product-hover-container {
+      padding: 0.7rem 0.35rem !important;
+      border-radius: var(--nt-radius) !important;
       justify-content: space-between !important;
-    }
-
-    body section#product .product-hover-container img {
-      max-width: 100% !important;
-      max-height: 110px !important;
-    }
-
-    body section#product .product-hover-container span {
-      font-size: 0.82rem !important;
-      padding: 4px 10px !important;
-      margin-top: 0.5rem !important;
-      white-space: nowrap !important;
-    }
-
-    body .pro-donate-wrapper {
-      padding: 1.25rem !important;
-    }
-
-    body .pro-donate-wrapper .pro-option-card {
-      padding: 1.15rem 1.15rem !important;
-      flex-wrap: nowrap !important;
-      align-items: flex-start !important;
-      gap: 12px !important;
-    }
-
-    /* Story & Social Tablet */
-    body section#story .story-grid {
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 2.5rem !important;
-    }
-
-    body .consult-form-side .form-card {
-      padding: 2rem 1.5rem !important;
-    }
-
-    body .social-row {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 12px !important;
-    }
-
-    body .social-row .social-btn {
       width: 100% !important;
       min-width: 0 !important;
     }
 
-    /* Comparison Table Mobile */
-    body .comparison-section .compare-row {
-      grid-template-columns: 1.45fr 0.8fr 0.75fr !important;
+    html body section#product .product-hover-container .product-frame-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      display: flex !important;
+      justify-content: center !important;
     }
 
-    body .comparison-section .compare-cell {
-      padding: 1rem 0.65rem !important;
-      font-size: 0.86rem !important;
+    html body section#product .product-hover-container img {
+      max-width: 100% !important;
+      max-height: 92px !important;
+    }
+
+    html body section#product .product-hover-container span {
+      font-size: 0.72rem !important;
+      line-height: 1.25 !important;
+      padding: 4px 5px !important;
+      margin-top: 0.45rem !important;
+      white-space: normal !important;
+      word-break: keep-all !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      border-radius: var(--nt-radius-sm) !important;
+    }
+
+    html body .pro-donate-wrapper {
+      padding: 1.1rem !important;
+    }
+
+    html body .pro-donate-wrapper .pro-option-card {
+      padding: 1.05rem !important;
+      gap: 10px !important;
+    }
+
+    /* Story & Social Mobile */
+    html body section#story .story-grid {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 2.25rem !important;
+    }
+
+    html body .consult-form-side .form-card {
+      padding: 1.85rem 1.35rem !important;
+    }
+
+    html body .social-row {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+    }
+
+    html body .social-row .social-btn {
+      width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Comparison Table Mobile */
+    html body .comparison-section .compare-row {
+      grid-template-columns: 1.35fr 0.92fr 0.73fr !important;
+    }
+
+    html body .comparison-section .compare-cell {
+      padding: 0.9rem 0.5rem !important;
+      font-size: 0.84rem !important;
+    }
+
+    html body .comparison-section .dentz-logo-wrap .dentz-logo-text {
+      font-size: 1.05rem !important;
+      letter-spacing: 0.4px !important;
+      white-space: nowrap !important;
     }
   }
 
   @media (max-width: 640px) {
-    /* On phones, arrange header action buttons in a spacious 2-column grid */
-    .header-actions.desktop-only {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 8px !important;
+    /* On phones <= 640px: 2-column top buttons + Full-Width Primary Order CTA! */
+    html body .header-actions.desktop-only {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 6px !important;
     }
-    /* When 3 buttons are shown (logged out), make the 3rd button (กดสั่งจองสินค้า) span full width! */
-    .header-actions.desktop-only button:nth-child(3):last-child {
+
+    html body .header-actions.desktop-only > :nth-child(3):last-child,
+    html body .header-actions.desktop-only > a.btn-cta-small:last-child {
       grid-column: 1 / -1 !important;
+      height: 38px !important;
+      font-size: 0.84rem !important;
     }
 
-    /* Hero 4 Checkmark Badges on Phone: 1 Full-Width Pill per row for zero text crowding */
-    body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] {
-      grid-template-columns: 1fr !important;
-      gap: 8px !important;
+    html body section#hero .hero-container .hero-content h1 {
+      font-size: clamp(1.65rem, 6.8vw, 2.05rem) !important;
     }
 
-    /* Reviews on Phone: 1 Full-Width Card per row so photos & captions are big and never squished */
-    body .reviews-section .reviews-grid {
-      grid-template-columns: 1fr !important;
-      gap: 1.35rem !important;
+    html body section#hero .hero-container .hero-content .btn-cta {
+      font-size: 0.98rem !important;
+      padding: 0.85rem 1rem 0.85rem 1.25rem !important;
     }
 
-    body .reviews-section .review-card {
-      height: 380px !important;
+    /* Hero 4 Checkmark Badges on Phone: 2x2 balanced compact pills */
+    html body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 7px !important;
     }
 
-    /* Social Buttons on Phone: 1 Full-Width Button per row for clean alignment */
-    body .social-row {
-      grid-template-columns: 1fr !important;
+    html body section#hero .hero-container .hero-content .hero-actions-row > div > div[style*="display: flex"] > span {
+      font-size: 0.76rem !important;
+      padding: 8px 9px !important;
+    }
+
+    /* Reviews on Phone: 1 Full-Width Card per row */
+    html body .reviews-section .reviews-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 1.25rem !important;
+    }
+
+    html body .reviews-section .review-card {
+      height: 375px !important;
+    }
+
+    /* Social Buttons on Phone: 1 Full-Width Button per row */
+    html body .social-row {
+      grid-template-columns: minmax(0, 1fr) !important;
       max-width: 360px !important;
       margin: 0 auto !important;
-      gap: 10px !important;
+      gap: 9px !important;
     }
 
-    body .social-row .social-btn {
-      width: 100% !important;
-      min-width: 0 !important;
-      padding: 0.9rem 1.25rem !important;
-    }
-
-    /* Fix Checkout Modal Address Grid & Quick Amount Buttons on Phone */
+    /* Checkout Modal Address Grid on Phone */
     #new-checkout-modal div[style*="grid-template-columns: 1fr 1fr"],
     #checkout-modal div[style*="grid-template-columns: 1fr 1fr"] {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: minmax(0, 1fr) !important;
       gap: 10px !important;
     }
 
-    /* Prevent buggy STYLE 30 rule from breaking flex headers inside modals */
     .modal-content div[style*="justify-content: space-between"],
     .pro-card-header {
       flex-direction: row !important;
     }
+
+    .nt-marquee-line { width: 48px; }
   }
 </style>
 
 <script id="dentz-masterpiece-ui-script">
 (function() {
-  // Custom Botanical & Clinical SVGs for the 5 Key Ingredients
-  const INGREDIENT_SVGS = [
-    // 1. กระดูกปลา (Nano Hydroxyapatite) — Crystalline Tooth Enamel Lattice
+  'use strict';
+
+  var INGREDIENT_SVGS = [
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="18 3 30 10 30 24 18 31 6 24 6 10 18 3"/><polygon points="18 9 25 13 25 21 18 25 11 21 11 13 18 9" stroke-opacity="0.65"/><circle cx="18" cy="17" r="2.5" fill="currentColor"/><line x1="18" y1="3" x2="18" y2="9"/><line x1="30" y1="10" x2="25" y2="13"/><line x1="30" y1="24" x2="25" y2="21"/><line x1="18" y1="31" x2="18" y2="25"/><line x1="6" y1="24" x2="11" y2="21"/><line x1="6" y1="10" x2="11" y2="13"/></svg>',
-    // 2. กะเม็ง (Eclipta Prostrata) — Soothing Botanical Blossom
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="4"/><path d="M18 4C15 9 15 12 18 14C21 12 21 9 18 4Z"/><path d="M18 32C15 27 15 24 18 22C21 24 21 27 18 32Z"/><path d="M4 18C9 15 12 15 14 18C12 21 9 21 4 18Z"/><path d="M32 18C27 15 24 15 22 18C24 21 27 21 32 18Z"/><path d="M8.1 8.1C12.5 10.2 14.2 12.2 15.2 15.2C12.2 14.2 10.2 12.5 8.1 8.1Z"/><path d="M27.9 27.9C23.5 25.8 21.8 23.8 20.8 20.8C23.8 21.8 25.8 23.5 27.9 27.9Z"/><path d="M27.9 8.1C23.5 10.2 21.8 12.2 20.8 15.2C23.8 14.2 25.8 12.5 27.9 8.1Z"/><path d="M8.1 27.9C12.5 25.8 14.2 23.8 15.2 20.8C12.2 21.8 10.2 23.5 8.1 27.9Z"/></svg>',
-    // 3. มังคุด (Mangosteen Extract) — Queen of Fruits Botanical Crown & Shield
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="21" r="10"/><path d="M11 12C11 9 14 8 18 11C22 8 25 9 25 12"/><path d="M18 11V5"/><path d="M14 21C14 18.8 15.8 17 18 17s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4Z" stroke-opacity="0.7"/><path d="M18 17V25"/><path d="M14 21H22"/></svg>',
-    // 4. ใบฝรั่ง (Guava Extract) — Detailed Organic Veined Botanical Leaf
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 29C7 16 16 7 29 7C29 20 20 29 7 29Z"/><path d="M7 29L24 12"/><path d="M13 23L13 16"/><path d="M18 18L18 11"/><path d="M13 23L20 23"/><path d="M18 18L25 18"/></svg>',
-    // 5. กานพลู (Clove Extract) — Aromatic Clove Bud & Bio-Active Sparkle
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 14L18 31"/><circle cx="18" cy="10" r="3.5"/><path d="M13 13L18 16L23 13"/><path d="M18 4V6.5"/><path d="M13.5 6.5L15.5 8.5"/><path d="M22.5 6.5L20.5 8.5"/><path d="M9 21L12 21M10.5 19.5V22.5" stroke-opacity="0.65"/><path d="M24 23L27 23M25.5 21.5V24.5" stroke-opacity="0.65"/></svg>'
   ];
 
-  const PILL_SVGS = [
+  var PILL_SVGS = [
     '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
     '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
     '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>'
   ];
 
+  var LEAF_SVG = '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 56C8 28 28 8 56 8C56 36 36 56 8 56Z" fill="currentColor"/><path d="M10 54L46 18" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+  var ARROW_UP_RIGHT = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>';
+
   function enhanceDentZUI() {
-    // 0. Inject Infinite Clinical Botanical Marquee Ribbon after #hero
-    const heroSection = document.getElementById('hero');
+    // 0. Hero Decorative Grid, Botanical Leaves & Live Pulse Dot
+    var heroSection = document.getElementById('hero');
+    if (heroSection) {
+      if (!heroSection.querySelector('.nt-hero-grid')) {
+        var grid = document.createElement('div');
+        grid.className = 'nt-hero-grid';
+        grid.setAttribute('aria-hidden', 'true');
+        heroSection.insertBefore(grid, heroSection.firstChild);
+      }
+      if (!heroSection.querySelector('.nt-hero-decor')) {
+        var decor = document.createElement('div');
+        decor.className = 'nt-hero-decor';
+        decor.setAttribute('aria-hidden', 'true');
+        decor.innerHTML =
+          '<span class="nt-leaf l1">' + LEAF_SVG + '</span>' +
+          '<span class="nt-leaf l2">' + LEAF_SVG + '</span>' +
+          '<span class="nt-leaf l3">' + LEAF_SVG + '</span>';
+        heroSection.insertBefore(decor, heroSection.firstChild);
+      }
+      var badgeNew = heroSection.querySelector('.badge-new');
+      if (badgeNew && !badgeNew.querySelector('.nt-live-dot')) {
+        var dot = document.createElement('span');
+        dot.className = 'nt-live-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        badgeNew.insertBefore(dot, badgeNew.firstChild);
+      }
+    }
+
+    // 0.2 hero-01 Signature Sliding Arrow-Up-Right Circle Badge on Primary CTAs
+    document.querySelectorAll('.header-actions .btn-cta-small, section#hero .hero-content .btn-cta').forEach(function(btn) {
+      btn.classList.add('nt-hero01-cta');
+      if (!btn.querySelector('.nt-cta-circle')) {
+        var circle = document.createElement('span');
+        circle.className = 'nt-cta-circle';
+        circle.setAttribute('aria-hidden', 'true');
+        circle.innerHTML = ARROW_UP_RIGHT;
+        btn.appendChild(circle);
+      }
+    });
+
+    // 0.4 hero-01 BrandSlider-inspired Clinical & Botanical Marquee after #hero
     if (heroSection && !document.querySelector('.dz-clinical-marquee')) {
-      const marquee = document.createElement('div');
+      var marquee = document.createElement('div');
       marquee.className = 'dz-clinical-marquee';
-      const itemsHtml =
+      var itemsHtml =
         '<div class="dz-marquee-item"><span class="dz-marquee-star">✦</span> NANO HYDROXYAPATITE ENAMEL REPAIR</div>' +
         '<div class="dz-marquee-item"><span class="dz-marquee-star">✦</span> 100% NATURAL BOTANICAL EXTRACTS</div>' +
         '<div class="dz-marquee-item"><span class="dz-marquee-star">✦</span> CLINICALLY BALANCED pH 6.5 - 7.0</div>' +
         '<div class="dz-marquee-item"><span class="dz-marquee-star">✦</span> 0% SLS & PARABEN FREE</div>' +
         '<div class="dz-marquee-item"><span class="dz-marquee-star">✦</span> CRUELTY-FREE CERTIFIED</div>' +
         '<div class="dz-marquee-item"><span class="dz-marquee-star">✦</span> GENTLE PERIORAL SKIN CARE</div>';
-      marquee.innerHTML = '<div class="dz-marquee-track">' + itemsHtml + itemsHtml + '</div>';
+      marquee.innerHTML =
+        '<div class="nt-marquee-caption">' +
+          '<span class="nt-marquee-line"></span>' +
+          '<span class="nt-marquee-label">Clinical &amp; Botanical Formulation Standards</span>' +
+          '<span class="nt-marquee-line right"></span>' +
+        '</div>' +
+        '<div class="dz-marquee-viewport"><div class="dz-marquee-track">' + itemsHtml + itemsHtml + '</div></div>';
       heroSection.parentNode.insertBefore(marquee, heroSection.nextSibling);
     }
 
-    // 0.5 Inject 3D Rotating Gold Orbital Ring SVG inside .hero-product-box
-    const heroProdBox = document.querySelector('section#hero .hero-product-box');
+    // 0.6 Botanical Geometry Ring SVG inside .hero-product-box
+    var heroProdBox = document.querySelector('section#hero .hero-product-box');
     if (heroProdBox && !heroProdBox.querySelector('.dz-hero-orbital-svg')) {
-      const ns = 'http://www.w3.org/2000/svg';
-      const svg = document.createElementNS(ns, 'svg');
+      var ns = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(ns, 'svg');
       svg.setAttribute('class', 'dz-hero-orbital-svg');
       svg.setAttribute('viewBox', '0 0 400 400');
       svg.innerHTML =
-        '<circle cx="200" cy="200" r="185" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="1.2" stroke-dasharray="8 8"/>' +
-        '<circle cx="200" cy="200" r="165" fill="none" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>' +
-        '<circle cx="200" cy="15" r="5" fill="#D4AF37"/>' +
-        '<circle cx="385" cy="200" r="4" fill="#34D399"/>' +
-        '<circle cx="15" cy="200" r="4" fill="#D4AF37"/>';
+        '<circle cx="200" cy="200" r="184" fill="none" stroke="rgba(46,125,50,0.28)" stroke-width="1.2" stroke-dasharray="7 7"/>' +
+        '<circle cx="200" cy="200" r="162" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>' +
+        '<circle cx="200" cy="16" r="4.5" fill="#2E7D32"/>' +
+        '<circle cx="384" cy="200" r="4" fill="#66BB6A"/>' +
+        '<circle cx="16" cy="200" r="4" fill="#2E7D32"/>';
       heroProdBox.insertBefore(svg, heroProdBox.firstChild);
     }
 
-    // 1. Upgrade Formulation Ingredient Icons & Number Badges
-    const ingCards = document.querySelectorAll('.formulation-section .ingredient-card-5');
-    ingCards.forEach((card, idx) => {
+    // 1. Upgrade Formulation Ingredient Icons & Number Badges (01 - 05)
+    var ingCards = document.querySelectorAll('.formulation-section .ingredient-card-5');
+    ingCards.forEach(function(card, idx) {
       if (!card.dataset.dzEnhanced) {
         card.dataset.dzEnhanced = 'true';
         card.classList.add('dz-spotlight-card');
-        const iconBox = card.querySelector('.ing-icon-5');
+        var iconBox = card.querySelector('.ing-icon-5');
         if (iconBox && INGREDIENT_SVGS[idx]) {
           iconBox.innerHTML = INGREDIENT_SVGS[idx];
         }
         if (!card.querySelector('.dz-ing-num')) {
-          const num = document.createElement('span');
+          var num = document.createElement('span');
           num.className = 'dz-ing-num';
           num.textContent = '0' + (idx + 1);
           card.appendChild(num);
@@ -8041,11 +8970,11 @@ try {
       }
     });
 
-    // 2. Add Custom Icons to the 3 Benefit Pills
-    const benefitPills = document.querySelectorAll('.formulation-section .benefit-pill');
-    benefitPills.forEach((pill, idx) => {
+    // 2. Add Custom Clinical Icons to the 3 Benefit Pills
+    var benefitPills = document.querySelectorAll('.formulation-section .benefit-pill');
+    benefitPills.forEach(function(pill, idx) {
       if (!pill.querySelector('.dz-pill-icon') && PILL_SVGS[idx]) {
-        const iconWrap = document.createElement('div');
+        var iconWrap = document.createElement('div');
         iconWrap.className = 'dz-pill-icon';
         iconWrap.innerHTML = PILL_SVGS[idx];
         pill.insertBefore(iconWrap, pill.firstChild);
@@ -8053,55 +8982,64 @@ try {
     });
 
     // 3. Add Clinical pH Spectrum Graphic inside .ph-balance-banner
-    const phBanner = document.querySelector('.formulation-section .ph-balance-banner');
+    var phBanner = document.querySelector('.formulation-section .ph-balance-banner');
     if (phBanner && !phBanner.querySelector('.dz-ph-spectrum')) {
-      const spec = document.createElement('div');
+      var spec = document.createElement('div');
       spec.className = 'dz-ph-spectrum';
       spec.innerHTML =
-        '<div class="dz-ph-labels"><span>pH 4.0 (กรด)</span><span style="color:#F5E27A;">★ โซนปลอดภัยริมฝีปาก (pH 6.5 - 7.0)</span><span>pH 9.0 (ด่าง)</span></div>' +
-        '<div class="dz-ph-bar"><div class="dz-ph-marker"></div></div>';
+        '<div class="dz-ph-safe-zone">★ โซนปลอดภัยริมฝีปาก (pH 6.5 - 7.0)</div>' +
+        '<div class="dz-ph-bar"><div class="dz-ph-marker"></div></div>' +
+        '<div class="dz-ph-labels"><span>pH 4.0 (กรด)</span><span>pH 9.0 (ด่าง)</span></div>';
       phBanner.appendChild(spec);
     }
 
-    // 4. Add "อ่านบทความฉบับเต็ม →" cue & Issue Badges to Knowledge Hub article cards + Carousel Controls
-    const articleCardEls = document.querySelectorAll('section#knowledge .article-card');
-    articleCardEls.forEach((card, idx) => {
-      const imgWrap = card.querySelector('.article-img');
+    // 3.5 Clear any React inline opacity:0 / translateY(60px) so cards are always crisp
+    document.querySelectorAll('.ingredient-card, .review-card, .article-card, .testi-card, .form-card, .compare-row').forEach(function(el) {
+      if (el.style && (el.style.opacity === '0' || el.style.transform)) {
+        el.style.opacity = '1';
+        el.style.transform = '';
+      }
+    });
+
+    // 4. Knowledge Hub Article Badges, Read-More Footer & Carousel Controls
+    var articleCardEls = document.querySelectorAll('section#knowledge .article-card');
+    articleCardEls.forEach(function(card, idx) {
+      var imgWrap = card.querySelector('.article-img');
       if (imgWrap && !imgWrap.querySelector('.dz-article-badge')) {
-        const b = document.createElement('span');
+        var b = document.createElement('span');
         b.className = 'dz-article-badge';
         b.textContent = 'INSIGHT ' + String(idx + 1).padStart(2, '0');
         imgWrap.appendChild(b);
       }
-      const content = card.querySelector('.article-content');
+      var content = card.querySelector('.article-content');
       if (content && !content.querySelector('.dz-article-readmore')) {
-        const more = document.createElement('div');
+        var more = document.createElement('div');
         more.className = 'dz-article-readmore';
         more.innerHTML = '<span>อ่านบทความฉบับเต็ม</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
         content.appendChild(more);
       }
     });
 
-    const knowledgeHeaderRight = document.querySelector('section#knowledge .section-header .view-all-link');
-    const carousel = document.querySelector('section#knowledge .articles-carousel');
+    var knowledgeHeaderRight = document.querySelector('section#knowledge .section-header .view-all-link');
+    var carousel = document.querySelector('section#knowledge .articles-carousel');
     if (knowledgeHeaderRight && carousel && !document.querySelector('.dz-carousel-controls')) {
-      const ctrlWrap = document.createElement('div');
+      var ctrlWrap = document.createElement('div');
       ctrlWrap.className = 'dz-carousel-controls';
-      const prevBtn = document.createElement('button');
+      var prevBtn = document.createElement('button');
       prevBtn.type = 'button';
       prevBtn.className = 'dz-carousel-btn';
       prevBtn.setAttribute('aria-label', 'เลื่อนไปทางซ้าย');
       prevBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
-      prevBtn.addEventListener('click', () => {
+      prevBtn.addEventListener('click', function() {
         carousel.scrollBy({ left: -360, behavior: 'smooth' });
       });
 
-      const nextBtn = document.createElement('button');
+      var nextBtn = document.createElement('button');
       nextBtn.type = 'button';
       nextBtn.className = 'dz-carousel-btn';
       nextBtn.setAttribute('aria-label', 'เลื่อนไปทางขวา');
       nextBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
-      nextBtn.addEventListener('click', () => {
+      nextBtn.addEventListener('click', function() {
         carousel.scrollBy({ left: 360, behavior: 'smooth' });
       });
 
@@ -8112,31 +9050,31 @@ try {
     }
 
     // 5. Inject Section Header above Comparison Table (#compare) if missing
-    const compareSec = document.querySelector('section#compare.comparison-section > .container');
+    var compareSec = document.querySelector('section#compare.comparison-section > .container');
     if (compareSec && !compareSec.querySelector('.dz-compare-header')) {
-      const hdr = document.createElement('div');
+      var hdr = document.createElement('div');
       hdr.className = 'section-header text-center dz-compare-header';
-      hdr.style.marginBottom = '2.5rem';
+      hdr.style.marginBottom = '2.25rem';
       hdr.innerHTML = '<div class="kicker">CLINICAL COMPARISON</div><h2 class="h2-large">ทำไม DENT-Z ถึงแตกต่างจากยาสีฟันทั่วไป</h2>';
       compareSec.insertBefore(hdr, compareSec.firstChild);
     }
 
     // 6. Add Kicker above Reviews Section (#reviews) if missing
-    const revSec = document.querySelector('section#reviews.reviews-section > .container');
+    var revSec = document.querySelector('section#reviews.reviews-section > .container');
     if (revSec && !revSec.querySelector('.kicker')) {
-      const kicker = document.createElement('div');
+      var kicker = document.createElement('div');
       kicker.className = 'kicker';
       kicker.textContent = 'REAL USER EXPERIENCES';
       revSec.insertBefore(kicker, revSec.firstChild);
     }
 
-    // 7. Bind Interactive Mouse Spotlight on Cards
-    document.querySelectorAll('.ingredient-card-5, .article-card, .hero-product-box, .testi-card').forEach(el => {
+    // 7. Bind Interactive Botanical Mouse Spotlight on Cards
+    document.querySelectorAll('.ingredient-card-5, .article-card, .hero-product-box, .testi-card').forEach(function(el) {
       if (!el.dataset.dzSpotlightBound) {
         el.dataset.dzSpotlightBound = 'true';
         el.classList.add('dz-spotlight-card');
-        el.addEventListener('mousemove', e => {
-          const rect = el.getBoundingClientRect();
+        el.addEventListener('mousemove', function(e) {
+          var rect = el.getBoundingClientRect();
           el.style.setProperty('--dz-mouse-x', (e.clientX - rect.left) + 'px');
           el.style.setProperty('--dz-mouse-y', (e.clientY - rect.top) + 'px');
         }, { passive: true });
@@ -8144,32 +9082,36 @@ try {
     });
   }
 
-  // Active Navigation Scroll-Spy
+  // Active Navigation Scroll-Spy (highlights active pill in hero-01 nav dock)
   function bindScrollSpy() {
     if (window.__dzScrollSpyBound) return;
     window.__dzScrollSpyBound = true;
-    const sectionIds = ['hero', 'knowledge', 'symptoms', 'reviews', 'story'];
-    window.addEventListener('scroll', () => {
-      const scrollPos = window.scrollY + 180;
-      let currentId = 'hero';
-      sectionIds.forEach(id => {
-        const el = document.getElementById(id);
+    var sectionIds = ['hero', 'knowledge', 'symptoms', 'story'];
+    function updateSpy() {
+      var scrollPos = window.scrollY + 200;
+      var currentId = 'hero';
+      sectionIds.forEach(function(id) {
+        var el = document.getElementById(id);
         if (el && el.offsetTop <= scrollPos) {
           currentId = id;
         }
       });
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        if (a.getAttribute('href') === '#' + currentId) {
+      document.querySelectorAll('.nav-links a').forEach(function(a) {
+        var href = a.getAttribute('href') || '';
+        var match = (currentId === 'hero' && (href === '#' || href === '#hero')) || href === ('#' + currentId);
+        if (match) {
           a.classList.add('dz-nav-active');
         } else {
           a.classList.remove('dz-nav-active');
         }
       });
-    }, { passive: true });
+    }
+    window.addEventListener('scroll', updateSpy, { passive: true });
+    updateSpy();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
       enhanceDentZUI();
       bindScrollSpy();
     });
@@ -8177,11 +9119,13 @@ try {
     enhanceDentZUI();
     bindScrollSpy();
   }
-  setTimeout(enhanceDentZUI, 500);
-  setTimeout(enhanceDentZUI, 1500);
-  const obs = new MutationObserver(enhanceDentZUI);
-  obs.observe(document.body, { childList: true, subtree: true });
+  setTimeout(enhanceDentZUI, 400);
+  setTimeout(enhanceDentZUI, 1200);
+  if (typeof MutationObserver !== 'undefined') {
+    var obs = new MutationObserver(enhanceDentZUI);
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
 })();
 </script>
-<!-- DENT-Z MASTERPIECE UI OVERHAUL END -->
+<!-- DENT-Z NATURE THEME (21st.dev) + HERO-01 UI OVERHAUL END -->
 </body></html>
