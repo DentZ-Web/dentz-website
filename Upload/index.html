@@ -7976,234 +7976,765 @@ try {
   }
 
   /* ============================================================================
-     10. SHOP / PROJECT SUPPORT (#product) — NATURE SHADCN PACKAGE SELECTOR
+     10. SHOP / PROJECT SUPPORT (#product) — CHOMM'S HOUSE STUDIO CONFIGURATOR UI
      ============================================================================ */
   html body section#product.shop-section {
     background: var(--nt-bg) !important;
-    padding: 6rem 0 !important;
+    padding: 4.5rem 0 5.5rem !important;
   }
 
   html body section#product .shop-container {
-    max-width: 1340px !important;
+    max-width: 1240px !important;
     margin: 0 auto !important;
-    padding: 0 2rem !important;
+    padding: 2.5rem 2.75rem !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E5DFD5 !important;
+    border-radius: 24px !important;
+    box-shadow: 0 20px 52px -22px rgba(27, 46, 30, 0.08) !important;
     display: grid !important;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
-    gap: 3.25rem !important;
-    align-items: stretch !important;
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr) !important;
+    gap: 3rem !important;
+    align-items: start !important;
     box-sizing: border-box !important;
   }
 
-  html body section#product .shop-image-side,
+  html body section#product .shop-image-side {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    position: sticky !important;
+    top: 96px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
   html body section#product .shop-details-side {
     min-width: 0 !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-  }
-
-  html body section#product .product-gallery {
-    background:
-      radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.85) 0%, transparent 52%),
-      linear-gradient(160deg, #EEF7EE 0%, #D4ECD6 60%, #C8E6C9 100%) !important;
-    border: 1px solid #B7DFB9 !important;
-    border-radius: var(--nt-radius-xl) !important;
-    padding: 1.75rem 1.5rem !important;
-    gap: 1.15rem !important;
-    box-shadow: var(--nt-shadow-md) !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
-    box-sizing: border-box !important;
-    max-width: 100% !important;
   }
 
-  html body section#product .product-hover-container {
-    background: var(--nt-card-pure) !important;
-    border: 1px solid var(--nt-border) !important;
-    border-radius: var(--nt-radius-lg) !important;
-    padding: 1.15rem !important;
-    margin-bottom: 0 !important;
-    box-shadow: var(--nt-shadow-xs) !important;
-    transition: all 0.3s var(--nt-ease) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+  /* Chomm's House Large Studio Stage (1:1 Rounded Gallery Box) */
+  html body section#product .dz-chomm-stage {
     position: relative !important;
-    min-width: 0 !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    max-height: 465px !important;
+    border-radius: 18px !important;
+    background: radial-gradient(circle at 50% 45%, #F6F3EC 0%, #EFEBE2 65%, #E7E2D7 100%) !important;
+    border: 1px solid #E4DEC9 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 2.25rem !important;
+    overflow: hidden !important;
     box-sizing: border-box !important;
   }
 
-  html body section#product .product-hover-container:hover,
-  html body section#product .product-hover-container.active {
-    background: #FFFFFF !important;
-    border-color: var(--nt-primary) !important;
-    box-shadow: 0 0 0 3px var(--nt-ring), var(--nt-shadow-md) !important;
-    transform: translateY(-3px) !important;
-  }
-
-  html body section#product .product-hover-container img {
-    max-width: 195px !important;
-    max-height: 180px !important;
+  html body section#product .dz-chomm-stage .dz-stage-img {
+    max-width: 78% !important;
+    max-height: 78% !important;
     width: auto !important;
     height: auto !important;
     object-fit: contain !important;
+    mix-blend-mode: multiply !important;
+    filter: brightness(1.045) contrast(1.045) !important;
+    transition: opacity 0.22s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
-  html body section#product .product-hover-container span {
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
+  html body section#product .dz-chomm-stage:hover .dz-stage-img {
+    transform: scale(1.03) !important;
+  }
+
+  html body section#product .dz-stage-size-pill {
+    position: absolute !important;
+    top: 14px !important;
+    left: 14px !important;
+    z-index: 3 !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid #E5DFD5 !important;
+    color: #2D3B2F !important;
+    padding: 5px 13px !important;
+    border-radius: 9999px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  html body section#product .dz-stage-qty-pill {
+    position: absolute !important;
+    top: 14px !important;
+    right: 14px !important;
+    z-index: 3 !important;
+    background: #1B4332 !important;
     color: #FFFFFF !important;
-    margin-top: 0.7rem !important;
-    background: var(--nt-primary) !important;
+    padding: 5px 13px !important;
+    border-radius: 9999px !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.2) !important;
+    display: none !important;
+  }
+
+  html body section#product .dz-stage-qty-pill.is-visible {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+  }
+
+  html body section#product .dz-stage-watermark {
+    position: absolute !important;
+    bottom: 15px !important;
+    left: 16px !important;
+    z-index: 3 !important;
+    color: #8C8577 !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 2.2px !important;
+    text-transform: uppercase !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    pointer-events: none !important;
+  }
+
+  html body section#product .dz-stage-disclaimer {
+    position: absolute !important;
+    bottom: 12px !important;
+    right: 12px !important;
+    z-index: 3 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid #E5DFD5 !important;
+    color: #4A554C !important;
+    padding: 4px 12px !important;
+    border-radius: 9999px !important;
+    font-size: 0.72rem !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    pointer-events: none !important;
+  }
+
+  /* Chomm's House Clean Horizontal Thumbnail Strip Below Stage */
+  html body section#product .product-gallery {
+    background: transparent !important;
     border: none !important;
-    padding: 5px 18px !important;
-    border-radius: var(--nt-radius) !important;
-    text-align: center !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 106px) !important;
+    justify-content: start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#product .product-hover-container {
+    aspect-ratio: 1 / 1 !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #EAE5DC !important;
+    border-radius: 13px !important;
+    padding: 5px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    min-width: 0 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  html body section#product .product-hover-container:hover {
+    border-color: #9EB5A2 !important;
+    background: #FFFFFF !important;
+    transform: none !important;
+  }
+
+  /* Keep SCRIPT #25 .active subtle unless selected as stage preview */
+  html body section#product .product-hover-container.active {
+    border-color: #C5D9C7 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Exact Chomm's House Double-Framed Active Thumbnail Ring */
+  html body section#product .product-hover-container.dz-thumb-selected {
+    border: 2px solid #1B4332 !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.12) !important;
+    transform: none !important;
+  }
+
+  html body section#product .product-hover-container .product-frame-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    background: #EFECE4 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+    mix-blend-mode: normal !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#product .product-hover-container .product-frame-wrapper::before,
+  html body section#product .product-hover-container .product-frame-wrapper::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  html body section#product .product-hover-container img {
+    max-width: 88% !important;
+    max-height: 88% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    background: transparent !important;
+    mix-blend-mode: multiply !important;
+    filter: brightness(1.045) contrast(1.045) !important;
+  }
+
+  /* Hide oversized legacy text buttons inside thumbnails for pure Chomm's House look */
+  html body section#product .product-hover-container > span {
+    display: none !important;
+  }
+
+  /* Subtle mini qty dot on thumbnails when tier selected */
+  html body section#product .product-hover-container .product-qty-badge {
+    top: 5px !important;
+    right: 5px !important;
+    background: #1B4332 !important;
+    color: #FFFFFF !important;
+    font-size: 0.62rem !important;
+    font-weight: 700 !important;
+    padding: 2px 6px !important;
+    border-radius: 9999px !important;
+    box-shadow: none !important;
   }
 
   html body section#product .product-separator {
     display: none !important;
   }
 
-  /* Project Support Notice — Nature Muted Linen + Forest Accent (zero gold) */
+  /* Right Side Compact Header & Notice */
+  html body section#product .shop-details-side .kicker {
+    margin-bottom: 0.4rem !important;
+    font-size: 0.72rem !important;
+    padding: 4px 11px !important;
+    width: fit-content !important;
+  }
+
+  html body section#product .shop-details-side h1 {
+    margin: 0 0 0.25rem 0 !important;
+    line-height: 1.15 !important;
+  }
+
+  html body section#product .dentz-logo-product .dentz-logo-text {
+    font-size: 2.2rem !important;
+  }
+
+  html body section#product .shop-details-side .product-description {
+    font-size: 0.93rem !important;
+    color: #5B695D !important;
+    margin: 0 0 0.75rem 0 !important;
+    line-height: 1.5 !important;
+  }
+
   html body section#product .hero-warning-box > div {
-    background: var(--nt-muted) !important;
-    border: 1px solid var(--nt-border) !important;
-    border-left: 4px solid var(--nt-primary) !important;
-    border-radius: var(--nt-radius) !important;
-    padding: 14px 20px !important;
-    margin: 16px 0 22px !important;
+    background: #FAF8F4 !important;
+    border: 1px solid #E6E0D6 !important;
+    border-left: 3.5px solid var(--nt-primary) !important;
+    border-radius: 10px !important;
+    padding: 9px 14px !important;
+    margin: 0 0 1.15rem 0 !important;
+    text-align: left !important;
     box-sizing: border-box !important;
   }
 
   html body section#product .hero-warning-box > div p {
-    color: var(--nt-fg) !important;
-    font-size: 0.93rem !important;
-    font-weight: 600 !important;
-    line-height: 1.6 !important;
+    color: #3D4F40 !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
     margin: 0 !important;
   }
 
-  /* Package Selection Cards */
+  /* Chomm's House Clean Borderless Configurator Groups */
+  html body section#product .package-selector {
+    margin-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.15rem !important;
+  }
+
   html body .pro-donate-wrapper {
-    background: var(--nt-bg-soft) !important;
-    border: 1px solid var(--nt-border) !important;
-    border-radius: var(--nt-radius-lg) !important;
-    padding: 1.5rem !important;
-    gap: 12px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    column-gap: 10px !important;
+    row-gap: 8px !important;
     box-sizing: border-box !important;
     max-width: 100% !important;
   }
 
   html body .pro-donate-wrapper .pro-group-title {
-    color: var(--nt-muted-fg) !important;
-    font-size: 0.82rem !important;
-    letter-spacing: 0.6px !important;
-  }
-
-  html body .pro-donate-wrapper .pro-option-card {
-    background: var(--nt-card-pure) !important;
-    border: 1px solid var(--nt-border) !important;
-    border-radius: var(--nt-radius-md) !important;
-    padding: 1.2rem 1.3rem !important;
-    margin-bottom: 8px !important;
+    grid-column: 1 / -1 !important;
     display: flex !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    flex-wrap: nowrap !important;
-    gap: 12px !important;
-    box-shadow: var(--nt-shadow-xs) !important;
-    transition: all 0.25s var(--nt-ease) !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    color: #1A241C !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    margin: 0 0 2px 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .pro-donate-wrapper .pro-group-title ~ .pro-group-title {
+    margin-top: 10px !important;
+  }
+
+  html body .dz-group-meta {
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    color: #6E7A70 !important;
+    transition: color 0.2s ease !important;
+  }
+
+  html body .dz-group-meta.is-active {
+    color: #1B4332 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Hide verbose radio circles, legacy pseudo-shimmers & multi-line lists inside pill buttons */
+  html body .pro-donate-wrapper .pro-option-card::before,
+  html body .pro-donate-wrapper .pro-option-card::after,
+  html body .pro-donate-wrapper .pro-option-card .pro-radio-custom,
+  html body .pro-donate-wrapper .pro-option-card .pro-benefits,
+  html body .pro-donate-wrapper .pro-option-card .extra-benefits,
+  html body .pro-donate-wrapper .pro-option-card .popular-badge,
+  html body .pro-donate-wrapper .pro-option-card .pro-badge-popular {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Base Pill Button Styling (Unselected Default + Before User Selection) */
+  html body .pro-donate-wrapper .pro-option-card,
+  html:not(.user-has-selected-package) body .pro-donate-wrapper .pro-option-card.selected {
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2DDD5 !important;
+    border-radius: 14px !important;
+    padding: 11px 12px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+    transform: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
   }
 
-  html body .pro-donate-wrapper .pro-option-card:hover {
-    border-color: #9CCC9E !important;
-    background: #FCFDFC !important;
-    transform: translateY(-2px) !important;
-    box-shadow: var(--nt-shadow-sm) !important;
+  /* Free Registration Option: Chomm's House Rounded Pill Tag */
+  html body .pro-donate-wrapper .pro-option-card[data-val="สนใจสินค้าทั่วไป"],
+  html:not(.user-has-selected-package) body .pro-donate-wrapper .pro-option-card[data-val="สนใจสินค้าทั่วไป"].selected {
+    grid-column: 1 / -1 !important;
+    width: fit-content !important;
+    min-width: 268px !important;
+    max-width: 100% !important;
+    border-radius: 9999px !important;
+    padding: 10px 22px !important;
   }
 
-  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected,
-  html body .pro-donate-wrapper .pro-option-card.selected,
-  html body .pro-option-card.selected,
-  html body .pro-option-card[data-selected] {
-    background: #F4FAF4 !important;
-    border: 2px solid var(--nt-primary) !important;
-    box-shadow: 0 0 0 3px var(--nt-ring), var(--nt-shadow-md) !important;
-    transform: translateY(-2px) !important;
-    animation: none !important;
+  /* 3 Paid Support Tiers: Side-by-Side Equal Pills (Chomm's House Size Row) */
+  html body .pro-donate-wrapper .pro-option-card[data-val="100"],
+  html body .pro-donate-wrapper .pro-option-card[data-val="500"],
+  html body .pro-donate-wrapper .pro-option-card[data-val="1000"] {
+    grid-column: span 1 !important;
+    width: 100% !important;
   }
 
+  html body .pro-donate-wrapper .pro-option-card .pro-card-content {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  html body .pro-donate-wrapper .pro-option-card[data-val="สนใจสินค้าทั่วไป"] .pro-card-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin: 0 !important;
+  }
+
+  html body .pro-donate-wrapper .pro-option-card:not([data-val="สนใจสินค้าทั่วไป"]) .pro-card-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  /* Pill Typography — Unselected (includes Gold Sponsor before user clicks!) */
   html body .pro-donate-wrapper .pro-option-card .pro-title,
-  html body .pro-option-card .pro-title,
-  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-title {
-    color: var(--nt-heading) !important;
-    -webkit-text-fill-color: var(--nt-heading) !important;
+  html:not(.user-has-selected-package) body .pro-donate-wrapper .pro-option-card.selected .pro-title {
+    color: #1F2922 !important;
+    -webkit-text-fill-color: #1F2922 !important;
     background: none !important;
     text-shadow: none !important;
     -webkit-text-stroke: 0 !important;
-    font-size: 1.08rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
   }
 
-  /* Override ALL legacy gold #B8860B / #D4AF37 prices to Nature Primary #2E7D32! */
   html body .pro-donate-wrapper .pro-option-card .pro-price,
-  html body .pro-option-card .pro-price,
-  html body .pro-option-card [class*="price"],
-  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-price {
+  html:not(.user-has-selected-package) body .pro-donate-wrapper .pro-option-card.selected .pro-price {
     color: var(--nt-primary) !important;
-    font-size: 1.22rem !important;
+    -webkit-text-fill-color: var(--nt-primary) !important;
+    font-size: 1.02rem !important;
     font-weight: 800 !important;
+    line-height: 1.2 !important;
     text-shadow: none !important;
   }
 
-  html body .gold-sponsor-badge,
-  html body .pro-badge-popular {
-    background: var(--nt-primary) !important;
-    color: #FFFFFF !important;
-    border-radius: var(--nt-radius-sm) !important;
-    box-shadow: var(--nt-shadow-xs) !important;
-    border: none !important;
+  html body .pro-donate-wrapper .pro-option-card .pro-price-badge,
+  html:not(.user-has-selected-package) body .pro-donate-wrapper .pro-option-card.selected .pro-price-badge {
+    color: #2E7D32 !important;
+    -webkit-text-fill-color: #2E7D32 !important;
+    background: #EEF6EE !important;
+    padding: 3px 10px !important;
+    border-radius: 9999px !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
   }
 
-  html body .pro-option-card .pro-radio-custom {
-    border: 2px solid var(--nt-border-strong) !important;
-    background: #FFFFFF !important;
-    margin-right: 4px !important;
+  /* Pill Hover */
+  html body .pro-donate-wrapper .pro-option-card:hover {
+    border-color: #2E7D32 !important;
+    background: #F9FCF9 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.08) !important;
   }
 
-  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-radio-custom,
-  html body .pro-option-card.selected .pro-radio-custom {
-    border: 6px solid var(--nt-primary) !important;
-    background-color: #FFFFFF !important;
-    box-shadow: 0 0 0 3px var(--nt-ring) !important;
+  /* Pill SELECTED State (Chomm's House High-Contrast Solid Dark Pill!) */
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected,
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected:hover {
+    background: #1B4332 !important;
+    background-image: none !important;
+    border-color: #1B4332 !important;
+    box-shadow: 0 6px 16px -4px rgba(27, 67, 50, 0.32) !important;
+    transform: translateY(-1px) !important;
     animation: none !important;
   }
 
-  html body .pro-benefits li {
-    color: var(--nt-muted-fg) !important;
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-title {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    text-shadow: none !important;
   }
-  html body .pro-benefits li svg {
-    color: var(--nt-primary) !important;
+
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-price {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    text-shadow: none !important;
+  }
+
+  html.user-has-selected-package body .pro-donate-wrapper .pro-option-card.selected .pro-price-badge {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    text-shadow: none !important;
+  }
+
+  /* Chomm's House 3-Card Packaging Showcase (บรรจุภัณฑ์ / ขนาดสินค้าที่ได้รับ) */
+  html body section#product .dz-chomm-packaging {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 9px !important;
+    margin-top: 2px !important;
+  }
+
+  html body section#product .dz-pkg-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  html body section#product .dz-pkg-title {
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    color: #1A241C !important;
+  }
+
+  html body section#product .dz-pkg-summary {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: #2E7D32 !important;
+  }
+
+  html body section#product .dz-pkg-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  html body section#product .dz-pkg-card {
+    background: #FFFFFF !important;
+    border: 1.5px solid #E5DFD5 !important;
+    border-radius: 16px !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.22s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  html body section#product .dz-pkg-card-inner {
+    background: #F6F4EF !important;
+    border-radius: 11px !important;
+    padding: 10px 8px 9px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 3px !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#product .dz-pkg-card:hover {
+    border-color: #9EB5A2 !important;
+    transform: translateY(-2px) !important;
+  }
+
+  html body section#product .dz-pkg-card.is-included {
+    border-color: #1B4332 !important;
+    box-shadow: 0 6px 16px -6px rgba(27, 67, 50, 0.2) !important;
+  }
+
+  html body section#product .dz-pkg-card.is-included .dz-pkg-card-inner {
+    background: #F2F8F3 !important;
+  }
+
+  html body section#product .dz-pkg-card.is-dimmed {
+    opacity: 0.48 !important;
+  }
+
+  html body section#product .dz-pkg-card.is-dimmed:hover {
+    opacity: 0.82 !important;
+  }
+
+  html body section#product .dz-pkg-name {
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: #1F2922 !important;
+    line-height: 1.25 !important;
+  }
+
+  html body section#product .dz-pkg-dim {
+    font-size: 0.72rem !important;
+    color: #6E7A70 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 4px !important;
+  }
+
+  html body section#product .dz-pkg-img-wrap {
+    width: 100% !important;
+    height: 92px !important;
+    background: transparent !important;
+    border-radius: 9px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4px !important;
+    margin-bottom: 4px !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#product .dz-pkg-img-wrap img {
+    max-width: 88% !important;
+    max-height: 82px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    mix-blend-mode: multiply !important;
+    filter: brightness(1.045) contrast(1.045) !important;
+  }
+
+  html body section#product .dz-pkg-qty {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    padding: 3px 10px !important;
+    border-radius: 9999px !important;
+    background: #EAE6DE !important;
+    color: #5C6B5E !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+    margin-top: auto !important;
+  }
+
+  html body section#product .dz-pkg-card.is-included .dz-pkg-qty {
+    background: #1B4332 !important;
+    color: #FFFFFF !important;
+  }
+
+  html body section#product .dz-pkg-card.is-raffle {
+    border-color: #81C784 !important;
+  }
+
+  html body section#product .dz-pkg-card.is-raffle .dz-pkg-qty {
+    background: #E8F5E9 !important;
+    color: #1B5E20 !important;
+    border: 1px solid #A5D6A7 !important;
+  }
+
+  /* Clean Single-Box Benefits Summary */
+  html body section#product .dz-chomm-benefits-box {
+    background: #FAF8F4 !important;
+    border: 1px solid #E5DFD5 !important;
+    border-radius: 14px !important;
+    padding: 12px 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  html body section#product .dz-benefits-empty {
+    font-size: 0.84rem !important;
+    color: #5C6B5E !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    line-height: 1.45 !important;
+  }
+
+  html body section#product .dz-benefits-head {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    margin-bottom: 7px !important;
+    padding-bottom: 6px !important;
+    border-bottom: 1px dashed #DFD8CC !important;
+  }
+
+  html body section#product .dz-benefits-head strong {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #1B4332 !important;
+  }
+
+  html body section#product .dz-benefits-head span {
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+    color: #2E7D32 !important;
+  }
+
+  html body section#product .dz-benefits-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  html body section#product .dz-benefits-list li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 7px !important;
+    font-size: 0.83rem !important;
+    color: #2D3B2F !important;
+    line-height: 1.45 !important;
+  }
+
+  html body section#product .dz-benefits-list li svg {
+    width: 14px !important;
+    height: 14px !important;
+    color: #2E7D32 !important;
+    flex-shrink: 0 !important;
+    margin-top: 3px !important;
+  }
+
+  /* Primary Order Button & Clean Trust Strip */
+  html body section#product .shop-details-side .btn-cta {
+    width: 100% !important;
+    min-height: 52px !important;
+    border-radius: 14px !important;
+    background: #1B4332 !important;
+    color: #FFFFFF !important;
+    font-size: 1.02rem !important;
+    font-weight: 700 !important;
+    border: none !important;
+    margin-top: 1.15rem !important;
+    box-shadow: 0 10px 24px -8px rgba(27, 67, 50, 0.38) !important;
+    transition: all 0.22s ease !important;
+  }
+
+  html body section#product .shop-details-side .btn-cta:hover {
+    background: var(--nt-primary) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 14px 28px -8px rgba(46, 125, 50, 0.42) !important;
   }
 
   html body section#product .shop-trust-icons {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 10px 14px !important;
-    padding-top: 1.35rem !important;
-    margin-top: 1.35rem !important;
-    border-top: 1px dashed var(--nt-border) !important;
+    gap: 8px !important;
+    padding-top: 1rem !important;
+    margin-top: 1rem !important;
+    border-top: 1px solid #EFECE6 !important;
   }
 
   html body section#product .shop-trust-icons .trust-item {
-    background: var(--nt-secondary) !important;
-    border: 1px solid var(--nt-accent) !important;
-    padding: 6px 14px !important;
-    border-radius: var(--nt-radius) !important;
-    color: var(--nt-secondary-fg) !important;
-    font-size: 0.84rem !important;
+    background: #FAF8F4 !important;
+    border: 1px solid #E6E0D6 !important;
+    padding: 5px 12px !important;
+    border-radius: 9999px !important;
+    color: #3D4F40 !important;
+    font-size: 0.78rem !important;
     font-weight: 600 !important;
   }
 
@@ -8472,7 +9003,8 @@ try {
     box-shadow: 0 0 0 2px var(--nt-ring) !important;
   }
 
-  html body #donate-amount-input {
+  html body #donate-amount-input,
+  html body #hybrid-amount-input {
     border: 1.5px solid var(--nt-primary) !important;
     color: var(--nt-primary-dark) !important;
     background: var(--nt-bg-soft) !important;
@@ -8685,63 +9217,127 @@ try {
       height: 360px !important;
     }
 
-    /* Shop Mobile — Strictly Contained Within 100% Viewport (Fixes 787px bug!) */
+    /* Shop Mobile — Chomm's House Clean Responsive Studio Layout */
+    html body section#product.shop-section {
+      padding: 2.5rem 0.75rem 3.5rem !important;
+    }
+
     html body section#product .shop-container {
       display: grid !important;
       grid-template-columns: minmax(0, 1fr) !important;
-      gap: 2rem !important;
-      padding: 0 1rem !important;
+      gap: 1.65rem !important;
+      padding: 1.35rem 1.15rem !important;
+      border-radius: 20px !important;
+      width: 100% !important;
+    }
+
+    html body section#product .shop-image-side {
+      position: static !important;
+      top: auto !important;
+      gap: 10px !important;
+    }
+
+    html body section#product .dz-chomm-stage {
+      max-height: 310px !important;
+      padding: 1.5rem !important;
+      border-radius: 16px !important;
+    }
+
+    html body section#product .dz-stage-watermark {
+      display: none !important;
+    }
+
+    html body section#product .dz-stage-disclaimer {
+      font-size: 0.68rem !important;
+      padding: 3px 10px !important;
+      bottom: 10px !important;
+      right: 10px !important;
     }
 
     html body section#product .product-gallery {
       display: grid !important;
       grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      padding: 0.85rem !important;
+      padding: 0 !important;
       gap: 8px !important;
-      border-radius: var(--nt-radius-lg) !important;
       width: 100% !important;
     }
 
     html body section#product .product-hover-container {
-      padding: 0.7rem 0.35rem !important;
-      border-radius: var(--nt-radius) !important;
-      justify-content: space-between !important;
+      padding: 6px !important;
+      border-radius: 10px !important;
       width: 100% !important;
       min-width: 0 !important;
-    }
-
-    html body section#product .product-hover-container .product-frame-wrapper {
-      width: 100% !important;
-      max-width: 100% !important;
-      min-width: 0 !important;
-      display: flex !important;
-      justify-content: center !important;
     }
 
     html body section#product .product-hover-container img {
-      max-width: 100% !important;
-      max-height: 92px !important;
+      max-width: 84% !important;
+      max-height: 84% !important;
     }
 
-    html body section#product .product-hover-container span {
-      font-size: 0.72rem !important;
-      line-height: 1.25 !important;
-      padding: 4px 5px !important;
-      margin-top: 0.45rem !important;
-      white-space: normal !important;
-      word-break: keep-all !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      border-radius: var(--nt-radius-sm) !important;
+    html body section#product .dentz-logo-product .dentz-logo-text {
+      font-size: 1.9rem !important;
     }
 
     html body .pro-donate-wrapper {
-      padding: 1.1rem !important;
+      padding: 0 !important;
+      column-gap: 8px !important;
+      row-gap: 8px !important;
     }
 
-    html body .pro-donate-wrapper .pro-option-card {
-      padding: 1.05rem !important;
-      gap: 10px !important;
+    html body .pro-donate-wrapper .pro-option-card[data-val="สนใจสินค้าทั่วไป"],
+    html:not(.user-has-selected-package) body .pro-donate-wrapper .pro-option-card[data-val="สนใจสินค้าทั่วไป"].selected {
+      width: 100% !important;
+      min-width: 0 !important;
+      padding: 10px 14px !important;
+    }
+
+    html body .pro-donate-wrapper .pro-option-card:not([data-val="สนใจสินค้าทั่วไป"]) {
+      padding: 10px 6px !important;
+      border-radius: 12px !important;
+    }
+
+    html body .pro-donate-wrapper .pro-option-card:not([data-val="สนใจสินค้าทั่วไป"]) .pro-title {
+      font-size: 0.8rem !important;
+    }
+
+    html body .pro-donate-wrapper .pro-option-card:not([data-val="สนใจสินค้าทั่วไป"]) .pro-price {
+      font-size: 0.94rem !important;
+    }
+
+    html body section#product .dz-pkg-grid {
+      gap: 8px !important;
+    }
+
+    html body section#product .dz-pkg-card {
+      padding: 6px !important;
+      border-radius: 13px !important;
+    }
+
+    html body section#product .dz-pkg-card-inner {
+      padding: 8px 4px 7px !important;
+      border-radius: 9px !important;
+    }
+
+    html body section#product .dz-pkg-name {
+      font-size: 0.78rem !important;
+    }
+
+    html body section#product .dz-pkg-dim {
+      font-size: 0.67rem !important;
+    }
+
+    html body section#product .dz-pkg-img-wrap {
+      height: 68px !important;
+      padding: 4px !important;
+    }
+
+    html body section#product .dz-pkg-img-wrap img {
+      max-height: 58px !important;
+    }
+
+    html body section#product .dz-pkg-qty {
+      font-size: 0.66rem !important;
+      padding: 2px 7px !important;
     }
 
     /* Story & Social Mobile */
@@ -8843,8 +9439,7 @@ try {
       gap: 10px !important;
     }
 
-    .modal-content div[style*="justify-content: space-between"],
-    .pro-card-header {
+    .modal-content div[style*="justify-content: space-between"] {
       flex-direction: row !important;
     }
 
@@ -9080,6 +9675,371 @@ try {
         }, { passive: true });
       }
     });
+
+    // 8. Chomm's House Studio Gallery & Pill Configurator Enhancement for #product
+    enhanceChommProductSection();
+  }
+
+  var CHECK_SVG_MINI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+  var chommStageIdx = 2;
+
+  function setChommStageView(idx) {
+    var prodSec = document.getElementById('product');
+    if (!prodSec) return;
+    var stage = prodSec.querySelector('.dz-chomm-stage');
+    if (!stage) return;
+    var hoverItems = prodSec.querySelectorAll('.product-hover-container');
+    if (hoverItems.length < 3) return;
+
+    var srcs = [
+      hoverItems[0].querySelector('img') ? hoverItems[0].querySelector('img').getAttribute('src') : '',
+      hoverItems[1].querySelector('img') ? hoverItems[1].querySelector('img').getAttribute('src') : '',
+      hoverItems[2].querySelector('img') ? hoverItems[2].querySelector('img').getAttribute('src') : ''
+    ];
+
+    var labels = [
+      'ซองขนาดทดลอง · 7 กรัม',
+      'หลอดขนาดพกพา · 30 กรัม',
+      'หลอดขนาดใหญ่ · 100 กรัม'
+    ];
+
+    if (idx < 0 || idx > 2 || !srcs[idx]) idx = 2;
+    chommStageIdx = idx;
+
+    var stageImg = stage.querySelector('.dz-stage-img');
+    var sizePill = stage.querySelector('.dz-stage-size-pill');
+    if (stageImg && stageImg.getAttribute('src') !== srcs[idx]) {
+      stageImg.setAttribute('src', srcs[idx]);
+    }
+    if (sizePill && sizePill.textContent !== labels[idx]) {
+      sizePill.textContent = labels[idx];
+    }
+
+    var allThumbs = [hoverItems[0], hoverItems[1], hoverItems[2]];
+    allThumbs.forEach(function(t, i) {
+      if (!t) return;
+      if (i === idx) {
+        if (!t.classList.contains('dz-thumb-selected')) t.classList.add('dz-thumb-selected');
+      } else {
+        if (t.classList.contains('dz-thumb-selected')) t.classList.remove('dz-thumb-selected');
+      }
+    });
+
+    updateChommStageQtyPill();
+  }
+
+  function updateChommStageQtyPill() {
+    var prodSec = document.getElementById('product');
+    if (!prodSec) return;
+    var qtyPill = prodSec.querySelector('.dz-stage-qty-pill');
+    if (!qtyPill) return;
+
+    var hasSelected = document.documentElement.classList.contains('user-has-selected-package');
+    var selectedCard = prodSec.querySelector('.pro-donate-wrapper .pro-option-card.selected');
+    var val = (hasSelected && selectedCard) ? selectedCard.getAttribute('data-val') : null;
+
+    var badgeText = '';
+    if (val === 'สนใจสินค้าทั่วไป') {
+      if (chommStageIdx === 0) badgeText = 'สิทธิ์ลุ้นรับฟรี';
+    } else if (val === '100') {
+      if (chommStageIdx === 0) badgeText = 'ได้รับ 3 ชิ้น';
+    } else if (val === '500') {
+      if (chommStageIdx === 0) badgeText = 'ได้รับ 5 ชิ้น';
+      else if (chommStageIdx === 1) badgeText = 'ได้รับ 3 ชิ้น';
+    } else if (val === '1000') {
+      if (chommStageIdx === 0) badgeText = 'ได้รับ 5 ชิ้น';
+      else if (chommStageIdx === 1) badgeText = 'ได้รับ 3 ชิ้น';
+      else if (chommStageIdx === 2) badgeText = 'ได้รับ 2 ชิ้น';
+    }
+
+    if (badgeText) {
+      if (qtyPill.textContent !== badgeText) qtyPill.textContent = badgeText;
+      if (!qtyPill.classList.contains('is-visible')) qtyPill.classList.add('is-visible');
+    } else {
+      if (qtyPill.classList.contains('is-visible')) qtyPill.classList.remove('is-visible');
+    }
+  }
+
+  function syncChommShopState(autoSwitchStage) {
+    var prodSec = document.getElementById('product');
+    if (!prodSec) return;
+    var donateWrap = prodSec.querySelector('.pro-donate-wrapper');
+    if (!donateWrap) return;
+
+    var hasSelected = document.documentElement.classList.contains('user-has-selected-package');
+    var selectedCard = donateWrap.querySelector('.pro-option-card.selected');
+    var val = (hasSelected && selectedCard) ? selectedCard.getAttribute('data-val') : null;
+
+    // 1. Update per-row header status meta (Chomm's House right-aligned selection label)
+    var freeMeta = document.getElementById('dz-free-tier-meta');
+    if (freeMeta) {
+      var isFree = val === 'สนใจสินค้าทั่วไป';
+      var nextFreeMeta = isFree ? '✓ เลือกแล้ว · ฟรี' : 'ไม่มีค่าใช้จ่าย';
+      if (freeMeta.textContent !== nextFreeMeta) freeMeta.textContent = nextFreeMeta;
+      freeMeta.classList.toggle('is-active', isFree);
+    }
+
+    var paidMeta = document.getElementById('dz-paid-tier-meta');
+    if (paidMeta) {
+      var paidMap = {
+        '100': '✓ Supporter · ฿ 100',
+        '500': '✓ Silver Funder · ฿ 500',
+        '1000': '✓ Gold Sponsor · ฿ 1,000'
+      };
+      var isPaid = Boolean(val && paidMap[val]);
+      var nextPaidMeta = isPaid ? paidMap[val] : 'ได้รับสินค้าจริง';
+      if (paidMeta.textContent !== nextPaidMeta) paidMeta.textContent = nextPaidMeta;
+      paidMeta.classList.toggle('is-active', isPaid);
+    }
+
+    // 2. Update 3 Chomm's House Packaging Cards
+    var pkgSummary = document.getElementById('dz-pkg-summary-text');
+    var pkgCards = prodSec.querySelectorAll('.dz-pkg-card');
+    if (pkgCards.length === 3) {
+      var cfg = {
+        summary: 'แตะเพื่อดูภาพขนาดสินค้า',
+        states: ['neutral', 'neutral', 'neutral'],
+        qtys: ['ขนาด 7 กรัม', 'ขนาด 30 กรัม', 'ขนาด 100 กรัม'],
+        stageIdx: 2
+      };
+      if (val === 'สนใจสินค้าทั่วไป') {
+        cfg = {
+          summary: 'สิทธิ์ลุ้นรับขนาดทดลองฟรี',
+          states: ['raffle', 'dimmed', 'dimmed'],
+          qtys: ['ลุ้นรับฟรี', 'พรีออเดอร์', 'พรีออเดอร์'],
+          stageIdx: 0
+        };
+      } else if (val === '100') {
+        cfg = {
+          summary: 'ได้รับรวม 3 ชิ้น',
+          states: ['included', 'dimmed', 'dimmed'],
+          qtys: ['ได้รับ 3 ชิ้น', '—', '—'],
+          stageIdx: 0
+        };
+      } else if (val === '500') {
+        cfg = {
+          summary: 'ได้รับรวม 8 ชิ้น (2 ขนาด)',
+          states: ['included', 'included', 'dimmed'],
+          qtys: ['ได้รับ 5 ชิ้น', 'ได้รับ 3 ชิ้น', '—'],
+          stageIdx: 1
+        };
+      } else if (val === '1000') {
+        cfg = {
+          summary: 'ได้รับครบทุกขนาด รวม 10 ชิ้น',
+          states: ['included', 'included', 'included'],
+          qtys: ['ได้รับ 5 ชิ้น', 'ได้รับ 3 ชิ้น', 'ได้รับ 2 ชิ้น'],
+          stageIdx: 2
+        };
+      }
+
+      if (pkgSummary && pkgSummary.textContent !== cfg.summary) {
+        pkgSummary.textContent = cfg.summary;
+      }
+
+      pkgCards.forEach(function(c, i) {
+        c.classList.toggle('is-included', cfg.states[i] === 'included');
+        c.classList.toggle('is-dimmed', cfg.states[i] === 'dimmed');
+        c.classList.toggle('is-raffle', cfg.states[i] === 'raffle');
+        var q = c.querySelector('.dz-pkg-qty');
+        if (q && q.textContent !== cfg.qtys[i]) {
+          q.textContent = cfg.qtys[i];
+        }
+      });
+
+      if (autoSwitchStage && val) {
+        setChommStageView(cfg.stageIdx);
+      } else {
+        updateChommStageQtyPill();
+      }
+    }
+
+    // 3. Update Clean Single-Box Benefits Summary (reads exact benefit items from selected card)
+    var benBox = prodSec.querySelector('.dz-chomm-benefits-box');
+    if (benBox) {
+      var targetKey = val || 'unselected';
+      if (benBox.dataset.renderedKey !== targetKey) {
+        benBox.dataset.renderedKey = targetKey;
+        if (!val || !selectedCard) {
+          benBox.innerHTML =
+            '<p class="dz-benefits-empty">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>' +
+              '<span>แตะเลือกรูปแบบด้านบน เพื่อดูจำนวนผลิตภัณฑ์และสิทธิประโยชน์ที่จะได้รับ</span>' +
+            '</p>';
+        } else {
+          var titleEl = selectedCard.querySelector('.pro-title');
+          var priceEl = selectedCard.querySelector('.pro-price') || selectedCard.querySelector('.pro-price-badge');
+          var tierTitle = titleEl ? titleEl.textContent.trim() : '';
+          var tierPrice = priceEl ? priceEl.textContent.trim() : '';
+          var liNodes = selectedCard.querySelectorAll('.pro-benefits li');
+          var extraNode = selectedCard.querySelector('.extra-benefits');
+
+          var listHtml = '';
+          liNodes.forEach(function(li) {
+            var txt = (li.textContent || '').trim();
+            if (txt) {
+              listHtml += '<li>' + CHECK_SVG_MINI + '<span>' + txt + '</span></li>';
+            }
+          });
+          if (extraNode && extraNode.textContent.trim()) {
+            var extraTxt = extraNode.textContent.trim();
+            if (extraTxt.charAt(0) === '+') extraTxt = extraTxt.slice(1).trim();
+            listHtml += '<li>' + CHECK_SVG_MINI + '<span><strong>' + extraTxt + '</strong></span></li>';
+          }
+
+          benBox.innerHTML =
+            '<div class="dz-benefits-head">' +
+              '<strong>สิทธิประโยชน์ · ' + tierTitle + '</strong>' +
+              '<span>' + tierPrice + '</span>' +
+            '</div>' +
+            '<ul class="dz-benefits-list">' + listHtml + '</ul>';
+        }
+      }
+    }
+  }
+
+  function enhanceChommProductSection() {
+    var prodSec = document.getElementById('product');
+    if (!prodSec) return;
+
+    var imgSide = prodSec.querySelector('.shop-image-side');
+    var gallery = prodSec.querySelector('.product-gallery');
+    var hoverItems = prodSec.querySelectorAll('.product-hover-container');
+
+    // A. Build Chomm's House Studio Stage + 3-Thumbnail Strip on Left
+    if (imgSide && gallery && hoverItems.length >= 3) {
+      if (!imgSide.querySelector('.dz-chomm-stage')) {
+        var stage = document.createElement('div');
+        stage.className = 'dz-chomm-stage';
+        stage.innerHTML =
+          '<span class="dz-stage-size-pill">หลอดขนาดใหญ่ · 100 กรัม</span>' +
+          '<span class="dz-stage-qty-pill"></span>' +
+          '<img class="dz-stage-img" alt="ผลิตภัณฑ์ยาสีฟัน DENT-Z" />' +
+          '<span class="dz-stage-watermark">❖ DENT-Z STUDIO</span>' +
+          '<span class="dz-stage-disclaimer">ภาพนี้เป็นเพียงภาพประกอบสินค้าเท่านั้น</span>';
+        imgSide.insertBefore(stage, gallery);
+        setChommStageView(2);
+      }
+
+      var thumbNodes = [hoverItems[0], hoverItems[1], hoverItems[2]];
+      var rebound = false;
+      thumbNodes.forEach(function(node, idx) {
+        if (!node || node.dataset.dzThumbBound) return;
+        node.dataset.dzThumbBound = 'true';
+        rebound = true;
+        node.setAttribute('role', 'button');
+        node.setAttribute('tabindex', '0');
+        node.addEventListener('click', function() {
+          setChommStageView(idx);
+        });
+        node.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setChommStageView(idx);
+          }
+        });
+      });
+      if (rebound) setChommStageView(chommStageIdx);
+    }
+
+    // B. Build Chomm's House Packaging Row + Single-Box Benefits on Right
+    var pkgSelector = prodSec.querySelector('.package-selector');
+    var donateWrap = pkgSelector ? pkgSelector.querySelector('.pro-donate-wrapper') : null;
+    if (pkgSelector && donateWrap && hoverItems.length >= 3 && !donateWrap.dataset.dzChommBound) {
+      donateWrap.dataset.dzChommBound = 'true';
+
+      // Remove inline font-size:1.25rem!important on free badge so pill sizing stays crisp
+      donateWrap.querySelectorAll('.pro-price-badge').forEach(function(b) {
+        b.removeAttribute('style');
+      });
+
+      // Enhance group headings to Chomm's House label + right status style
+      var groupTitles = donateWrap.querySelectorAll('.pro-group-title');
+      if (groupTitles[0]) {
+        groupTitles[0].removeAttribute('style');
+        groupTitles[0].innerHTML = '<span>รูปแบบฟรี (Free Registration)</span><span class="dz-group-meta" id="dz-free-tier-meta">ไม่มีค่าใช้จ่าย</span>';
+      }
+      if (groupTitles[1]) {
+        groupTitles[1].removeAttribute('style');
+        groupTitles[1].innerHTML = '<span>ระดับการสนับสนุน (Support Tier)</span><span class="dz-group-meta" id="dz-paid-tier-meta">ได้รับสินค้าจริง</span>';
+      }
+
+      if (!pkgSelector.querySelector('.dz-chomm-packaging')) {
+        var img0 = hoverItems[0].querySelector('img') ? hoverItems[0].querySelector('img').getAttribute('src') : '';
+        var img1 = hoverItems[1].querySelector('img') ? hoverItems[1].querySelector('img').getAttribute('src') : '';
+        var img2 = hoverItems[2].querySelector('img') ? hoverItems[2].querySelector('img').getAttribute('src') : '';
+
+        var pkgWrap = document.createElement('div');
+        pkgWrap.className = 'dz-chomm-packaging';
+        pkgWrap.innerHTML =
+          '<div class="dz-pkg-header">' +
+            '<span class="dz-pkg-title">บรรจุภัณฑ์ (Packaging)</span>' +
+            '<span class="dz-pkg-summary" id="dz-pkg-summary-text">แตะเพื่อดูภาพขนาดสินค้า</span>' +
+          '</div>' +
+          '<div class="dz-pkg-grid">' +
+            '<div class="dz-pkg-card" data-pkg-idx="0" role="button" tabindex="0">' +
+              '<div class="dz-pkg-card-inner">' +
+                '<div class="dz-pkg-name">ขนาดทดลอง</div>' +
+                '<div class="dz-pkg-dim">ซอง 7 กรัม</div>' +
+                '<div class="dz-pkg-img-wrap"><img alt="ขนาดทดลอง 7 กรัม" /></div>' +
+                '<span class="dz-pkg-qty">ขนาด 7 กรัม</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dz-pkg-card" data-pkg-idx="1" role="button" tabindex="0">' +
+              '<div class="dz-pkg-card-inner">' +
+                '<div class="dz-pkg-name">ขนาดพกพา</div>' +
+                '<div class="dz-pkg-dim">หลอด 30 กรัม</div>' +
+                '<div class="dz-pkg-img-wrap"><img alt="ขนาดพกพา 30 กรัม" /></div>' +
+                '<span class="dz-pkg-qty">ขนาด 30 กรัม</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="dz-pkg-card" data-pkg-idx="2" role="button" tabindex="0">' +
+              '<div class="dz-pkg-card-inner">' +
+                '<div class="dz-pkg-name">ขนาดใหญ่</div>' +
+                '<div class="dz-pkg-dim">หลอด 100 กรัม</div>' +
+                '<div class="dz-pkg-img-wrap"><img alt="ขนาดใหญ่ 100 กรัม" /></div>' +
+                '<span class="dz-pkg-qty">ขนาด 100 กรัม</span>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        var cardImgs = pkgWrap.querySelectorAll('.dz-pkg-img-wrap img');
+        if (cardImgs[0] && img0) cardImgs[0].setAttribute('src', img0);
+        if (cardImgs[1] && img1) cardImgs[1].setAttribute('src', img1);
+        if (cardImgs[2] && img2) cardImgs[2].setAttribute('src', img2);
+
+        pkgWrap.querySelectorAll('.dz-pkg-card').forEach(function(card, idx) {
+          card.addEventListener('click', function() {
+            setChommStageView(idx);
+          });
+          card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setChommStageView(idx);
+            }
+          });
+        });
+
+        pkgSelector.appendChild(pkgWrap);
+      }
+
+      if (!pkgSelector.querySelector('.dz-chomm-benefits-box')) {
+        var benBox = document.createElement('div');
+        benBox.className = 'dz-chomm-benefits-box';
+        pkgSelector.appendChild(benBox);
+      }
+
+      syncChommShopState(false);
+    }
+
+    if (!window.__dzChommClickSyncBound) {
+      window.__dzChommClickSyncBound = true;
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest && e.target.closest('.pro-option-card')) {
+          setTimeout(function() { syncChommShopState(true); }, 15);
+          setTimeout(function() { syncChommShopState(false); }, 90);
+        }
+      });
+    }
   }
 
   // Active Navigation Scroll-Spy (highlights active pill in hero-01 nav dock)
