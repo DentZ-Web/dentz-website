@@ -1,0 +1,33 @@
+{
+  "baseline": {
+    "passed": 45,
+    "total": 45,
+    "page_errors": [],
+    "local_http_errors": []
+  },
+  "candidate": {
+    "passed": 45,
+    "total": 45,
+    "page_errors": [],
+    "local_http_errors": []
+  },
+  "source_invariants": {
+    "script_hashes_identical": true,
+    "script_count": 32,
+    "form_contract_identical": true,
+    "field_contract_identical": true,
+    "static_ids_identical": true,
+    "inline_handlers_identical": true,
+    "unrelated_original_files_unchanged": true,
+    "changed_unrelated_files": [],
+    "unchanged_file_count": 42,
+    "root_deploy_upload_identical": true
+  },
+  "new_regressions": [],
+  "source_sha256": {
+    "index.html": "15cb2769b32d229635c194f372af0b373656af71099a8ccb565554cdbaa6200e",
+    "dentz-ui-refresh.css": "6f0b514a3cde636bbe433c515e0e61ba453d78df6d46a0b4f13ff256ea204bf1",
+    "Deploy/dentz-ui-refresh.css": "a2ace3b5758347191a1e7f55d15247377de1199de3dccc0b48b0f42e4b0eefe3",
+    "Upload/dentz-ui-refresh.css": "a2ace3b5758347191a1e7f55d15247377de1199de3dccc0b48b0f42e4b0eefe3"
+  }
+}
